@@ -1,0 +1,405 @@
+﻿@model DocumentDevelopment.ViewModels.DataModel
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    @{ await Html.RenderPartialAsync("DocumentStyle"); }
+
+</head>
+
+<body class="main-content container-fluid">
+    <div class="section-full">
+        <div id="logo" alt="" class="col-xs-1"></div>
+        <h1 style="margin-bottom: 0">
+            Certificate of Chimney Sweeping <span class="sub_heading">(Landlord Safety Certificate)</span>
+        </h1>
+        <p class="description">
+            This record is for safety purposes only. This report is vaild for the day of assessment
+            only.
+        </p>
+    </div>
+    <div>
+        <div class="section-half">
+            <div class="content-block">
+                <h2>Engineer Details</h2>
+                <table class="content-inner" cellspacing=0>
+                    <tr>
+                        <td class="question">
+                            <p>Engineer Name:</p>
+                        </td>
+                        <td class="answer">
+                            <p>@(Model.Engineer.FirstName + " " + Model.Engineer.LastName)</p>
+                        </td>
+                        <td class="question">
+                            <p>Company Name:</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Company?.CompanyName</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question">
+                            <p>Address:</p>
+                        </td>
+                        <td class="answer" colspan="3">
+                            <p>
+                                @Model.Company?.Address?.AddressOne<br />
+                                @Model.Company?.Address?.AddressTwo<br />
+                                @Model.Company?.Address?.City<br />
+                                @Model.Company?.Address?.Postcode
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section-quarter">
+            <div class="content-block section-border" style="height: 82px;">
+                <h2>Sweeping Address</h2>
+                <p>
+                    @Model.Property.Address.AddressOne<br />
+                    @Model.Property.Address.AddressTwo<br />
+                    @Model.Property.Address.City<br />
+                    @Model.Property.Address.Postcode
+                </p>
+            </div>
+        </div>
+        <div class="section-quarter">
+            <div class="content-block section-border" style="height: 82px;">
+                <h2>Landlord Address</h2>
+                <p>
+                    @Model.Landlord.Address.AddressOne<br />
+                    @Model.Landlord.Address.AddressTwo<br />
+                    @Model.Landlord.Address.City<br />
+                    @Model.Landlord.Address.Postcode
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="section-twothird">
+            <div class="content-block">
+                <table cellspacing=0>
+                    <thead>
+                        <tr>
+                            <th class="spacing-header"></th>
+                            @for (var x = 1; x <= Model.Chimneys.Count(); x++)
+                            {
+                                <th>Chimney @x</th>
+                            }
+                        </tr>
+                    </thead>
+                </table>
+                <h2 style="border-top-right-radius: 0px;">Appliance Details</h2>
+                <table class="content-inner" cellspacing=0>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Location</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.ApplianceLocation</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Description</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>
+                                    @chimney.Make<br />
+                                    @chimney.Model
+                                </p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Fuel Type</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Payload.FuelType</p>
+                            </td>
+                        }
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content-block">
+                <h2>Visual Inspection</h2>
+                <table class="content-inner" cellspacing=0>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Flue</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_FlueResult")</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Stack</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_StackResult")</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Pot</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_PotResult")</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Cowl</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_CowlResult")</p>
+                            </td>
+                        }
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content-block">
+                <h2>Tests / Observations</h2>
+                <table class="content-inner" cellspacing=0>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Deposits Removed</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_DepositRemoved")</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Deposit Detail</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_DepositDetail")</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Fire Risk</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_FireRiskResult")</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Smoke Test Type II (Cold)</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_SmokeTestTypeTwoResult")</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Ventilation</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_VentilationResult")</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>CCTV Inspection</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_CCTVInspection")</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Pressure Test</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_PressureTestResult")</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Sweep Method</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_SweepMethod")</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Next Sweep Date</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@(DateTime.Now.AddYears(1).ToString("yyyy-MM-dd"))</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Warning Notice Issued?</p>
+                        </td>
+                        @foreach (var chimney in Model.Chimneys)
+                        {
+                            <td class="answer" colspan="2">
+                                <p>@chimney.Answers.GetValue("E_UnsafeProcedureRequiredResult")</p>
+                            </td>
+                        }
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-third">
+            <div class="content-block section-border">
+                <h2>Defects Identified</h2>
+                <table class="content-inner" cellspacing=0>
+                    @foreach (var defect in Model.Defects)
+                    {
+                        <tr>
+                            <td class="question-prefix repeater">
+                                <p>@defect.Order</p>
+                            </td>
+                            <td class="answer" colspan="19">
+                                <p>@defect.Defect</p>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+
+            <div class="content-block section-border">
+                <h2>Remedial Recommendations</h2>
+                <table class="content-inner" cellspacing=0>
+                    @foreach (var defect in Model.Defects)
+                    {
+                        <tr>
+                            <td class="question-prefix repeater">
+                                <p>@defect.Order</p>
+                            </td>
+                            <td class="answer" colspan="19">
+                                <p>@defect.Recommendation</p>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+
+            <div class="content-block">
+                <h2>Servicing Record Sign Off</h2>
+                <table class="content-inner" cellspacing=0>
+                    <tr>
+                        <td class="question-prefix" rowspan="3" colspan="3">
+                            <p>Issued by:</p>
+                        </td>
+                        <td class="question" colspan="2">
+                            <p>Signed:</p>
+                        </td>
+                        <td class="answer" colspan="4" height=40>
+                            <img src="data:image/png;base64, @(Model.EngineerSignatureImage)" alt="" height="30">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="2">
+                            <p>Print Name:</p>
+                        </td>
+                        <td class="answer" colspan="4">
+                            <p>@(Model.Engineer.FirstName + " " + Model.Engineer.LastName)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="2">
+                            <p>Date:</p>
+                        </td>
+                        <td class="answer" colspan="4">
+                            <p>@(DateTime.Now.ToString("yyyy-MM-dd"))</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-prefix" rowspan="3" colspan="3" style="border-bottom-left-radius: 10px;">
+                            <p>Customer Confirmation:</p>
+                        </td>
+                        <td class="question" colspan="2">
+                            <p>Signed:</p>
+                        </td>
+                        <td class="answer" colspan="4" height=40>
+                            <img src="data:image/png;base64, @(Model.TenantSignatureImage)" alt="" height="30">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="2">
+                            <p>Print Name:</p>
+                        </td>
+                        <td class="answer" colspan="4">
+                            <p>@Model.Answers.GetValue("E_PrintName")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="2">
+                            <p>Date:</p>
+                        </td>
+                        <td class="answer" colspan="4" style="border-bottom-right-radius: 10px;">
+                            <p>@(Model.JobDate.ToString("yyyy-MM-dd"))</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

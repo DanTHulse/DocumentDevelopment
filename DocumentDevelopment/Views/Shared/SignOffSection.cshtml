@@ -1,0 +1,55 @@
+﻿@model DocumentDevelopment.ViewModels.DataModel
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div class="content-block">
+    <h2>Servicing Record Sign Off</h2>
+    <table class=" content-inner" cellspacing=0>
+        <tr>
+            <td class="question-prefix" colspan="5">
+                <p>Issued by</p>
+            </td>
+            <td class="question" colspan="4">
+                <p>Signed</p>
+            </td>
+            <td class="answer" colspan="6" height=40>
+                <img src="data:image/png;base64, @(Model.EngineerSignatureImage)" alt="" height="30">
+            </td>
+            <td class="question" colspan="3">
+                <p>Print Name</p>
+            </td>
+            <td class="answer" colspan="5">
+                <p>@(Model.Engineer.FirstName + " " + Model.Engineer.LastName)</p>
+            </td>
+            <td class="question" colspan="3">
+                <p>Date</p>
+            </td>
+            <td class="answer" colspan="5">
+                <p>@(Model.JobDate.DateTime.ToString("yyyy-MM-dd"))</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="question-prefix" colspan="5">
+                <p>Received By</p>
+            </td>
+            <td class="question" colspan="4">
+                <p>Signed</p>
+            </td>
+            <td class="answer" colspan="6" height=40>
+                <img src="data:image/png;base64, @(Model.TenantSignatureImage)" alt="" height="30">
+            </td>
+            <td class="question" colspan="3">
+                <p>Print Name</p>
+            </td>
+            <td class="answer" colspan="5">
+                <p>@(Model.Answers.GetValue("E_PrintName"))</p>
+            </td>
+            <td class="question" colspan="3">
+                <p>Date</p>
+            </td>
+            <td class="answer" colspan="5">
+                <p>@(DateTime.Now.ToString("yyyy-MM-dd"))</p>
+            </td>
+        </tr>
+    </table>
+</div>

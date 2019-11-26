@@ -1,0 +1,629 @@
+﻿@model DocumentDevelopment.ViewModels.DataModel
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    @{ await Html.RenderPartialAsync("DocumentStyle"); }
+
+</head>
+
+<body class="main-content container-fluid">
+    <div class="section-full">
+        <div id="logo" alt="" class="col-xs-1"></div>
+        <h1 style="margin-bottom: 0">
+            Annual Solar Thermal Equipment Service
+        </h1>
+        <p class="description">
+            Please note where gas is used as a primary or secondary source to heat the hot water this
+            document does not eliminate the requirement for a seperate Landlord's Gas Safety
+            Record (LGSR) to be completed.
+        </p>
+    </div>
+
+    <div>
+        <div class="section-third">
+            <div class="content-block">
+                <h2>Customer Details</h2>
+                <table class="content-inner" cellspacing=0>
+                    <tr>
+                        <td class="question">
+                            <p>Name</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Answers.GetValue("E_PrintName")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question">
+                            <p>Address</p>
+                        </td>
+                        <td class="answer" colspan="2" style="height: 60px;">
+                            <p>
+                                @(Model.Property.Address.AddressOne + " " + Model.Property.Address.AddressTwo)<br />
+                                @(Model.Property.Address.City + " " + Model.Property.Address.Postcode)
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section-third">
+            <div class="content-block">
+                <h2>Landlord Details</h2>
+                <table class="content-inner" cellspacing=0>
+                    <tr>
+                        <td class="question">
+                            <p>Landlord Name</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Landlord.Name</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question">
+                            <p>Address</p>
+                        </td>
+                        <td class="answer" colspan="2" style="height: 60px;">
+                            <p>
+                                @(Model.Landlord.Address.AddressOne + " " + Model.Landlord.Address.AddressTwo)<br />
+                                @(Model.Landlord.Address.City + " " + Model.Landlord.Address.Postcode)
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section-third">
+            <div class="content-block">
+                <h2>Company & Engineer Details</h2>
+                <table class="content-inner" cellspacing=0>
+                    <tr>
+                        <td class="question">
+                            <p>Company Name</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Company?.CompanyName</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question">
+                            <p>Company Address</p>
+                        </td>
+                        <td class="answer" colspan="2" style="height: 40px;">
+                            <p>
+                                @(Model.Company?.Address?.AddressOne + " " + Model.Company?.Address?.AddressTwo)<br />
+                                @(Model.Company?.Address?.City + " " + Model.Company?.Address?.Postcode)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question">
+                            <p>Engineer Name</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@(Model.Engineer.FirstName + " " + Model.Engineer.LastName)</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="section-half">
+            <div class="content-block">
+                <h2>Equipment Details</h2>
+                <table class="content-inner" cellspacing=0>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>System Type</p>
+                        </td>
+                        <td class="answer" colspan="12">
+                            <p>@Model.Appliance.Payload.SystemType</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Cylinder Make</p>
+                        </td>
+                        <td class="answer" colspan="5">
+                            <p>@Model.Appliance.Payload.CylinderMake</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Cylinder Model</p>
+                        </td>
+                        <td class="answer" colspan="4">
+                            <p>@Model.Appliance.Payload.CylinderModel</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Cylinder S/N</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Appliance.Payload.CylinderSerialNumber</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Cylinder Type</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Appliance.Payload.CylinderType</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Cylinder Size</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Appliance.Payload.CylinderSize<span class="units">Ltrs</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Collector Make</p>
+                        </td>
+                        <td class="answer" colspan="5">
+                            <p>@Model.Appliance.Payload.CollectorMake</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Collector Model</p>
+                        </td>
+                        <td class="answer" colspan="4">
+                            <p>@Model.Appliance.Payload.CollectorModel</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Collector S/N</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Appliance.Payload.CollectorSerialNumber</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Collector Type</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Appliance.Payload.CollectorType</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>No. of Collectors</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Appliance.Payload.NumberOfCollectors</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Pump Station Make</p>
+                        </td>
+                        <td class="answer" colspan="5">
+                            <p>@Model.Appliance.Payload.PumpStationMake</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Pump Station Model</p>
+                        </td>
+                        <td class="answer" colspan="4">
+                            <p>@Model.Appliance.Payload.PumpStationModel</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Pump Station S/N</p>
+                        </td>
+                        <td class="answer" colspan="5">
+                            <p>@Model.Appliance.Payload.PumpStationSerialNumber</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>No. of Pumps</p>
+                        </td>
+                        <td class="answer" colspan="4">
+                            <p>@Model.Appliance.Payload.NumberOfPumps</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Drain Back Tank Make</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Appliance.Payload.DrainBackTankMake</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Drain Back Tank Model</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Appliance.Payload.DrainBackTankModel</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Drain Back Tank S/N</p>
+                        </td>
+                        <td class="answer" colspan="2">
+                            <p>@Model.Appliance.Payload.DrainBackTankSerialNumber</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Expansion Vessel Size</p>
+                        </td>
+                        <td class="answer" colspan="5">
+                            <p>@Model.Appliance.Payload.ExpansionVesselSize<span class="units">Ltrs</span></p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Expansion Pre Charge Setting</p>
+                        </td>
+                        <td class="answer" colspan="4">
+                            <p>@Model.Appliance.Payload.ExVesselPreChargeSetting <span class="units">bar</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="4">
+                            <p>Appliance Condition</p>
+                        </td>
+                        <td class="answer" colspan="4">
+                            <p>@Model.Appliance.Payload.ApplianceCondition</p>
+                        </td>
+                        <td class="question" colspan="4">
+                            <p>Landlord's Appliance</p>
+                        </td>
+                        <td class="answer" colspan="3">
+                            <p>@Model.Appliance.Payload.LandlordsAppliance</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content-block">
+                <table cellspacing=0 class="content-inner">
+                    <thead>
+                        <tr>
+                            <th style="border-radius: 10px 0px 0px 0px; width: 6px;"></th>
+                            <th style="width: 110px;">Defects Identified</th>
+                            <th style="border-radius: 0px 10px 0px 0px; width: 120px;">Remedial Recommendations</th>
+                        </tr>
+                    </thead>
+                    @foreach (var defect in Model.Defects)
+                    {
+                        <tr>
+                            <td class="question-prefix repeater">
+                                <p>@defect.Order</p>
+                            </td>
+                            <td class="answer">
+                                <p>@defect.Defect</p>
+                            </td>
+                            <td class="answer">
+                                <p>@defect.Recommendation</p>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+
+            <div class="content-block">
+                <h2>Servicing Record Sign Off</h2>
+                <table class=" content-inner" cellspacing=0>
+                    <tr>
+                        <td class="question-prefix" colspan="5">
+                            <p>Issued by</p>
+                        </td>
+                        <td class="question" colspan="4">
+                            <p>Signed</p>
+                        </td>
+                        <td class="answer" colspan="6" height=40>
+                            <img src="data:image/png;base64, @Model.EngineerSignatureImage" alt="" height="30">
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Print Name</p>
+                        </td>
+                        <td class="answer" colspan="5">
+                            <p>@(Model.Engineer.FirstName + " " + Model.Engineer.LastName)</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Date</p>
+                        </td>
+                        <td class="answer" colspan="4">
+                            <p>@(DateTime.Now.ToString("yyyy-MM-dd"))</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-prefix" colspan="5">
+                            <p>Received By</p>
+                        </td>
+                        <td class="question" colspan="4">
+                            <p>Signed</p>
+                        </td>
+                        <td class="answer" colspan="6" height=40>
+                            <img src="data:image/png;base64, @Model.TenantSignatureImage" alt="" height="30">
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Print Name</p>
+                        </td>
+                        <td class="answer" colspan="5">
+                            <p>@Model.Answers.GetValue("E_PrintName")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Date</p>
+                        </td>
+                        <td class="answer" colspan="4">
+                            <p>@(Model.JobDate.ToString("yyyy-MM-dd"))</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-half">
+            <div class="content-block">
+                <h2>Solar System Checks</h2>
+                <table class="content-inner" cellspacing=0>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Initial System Pressure (ISP)</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_InitialSystemPressure")<span class="units">bar</span></p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Is ISP Correct?</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_InitialSystemPressureCorrectResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Condition of Collectors & Ancillaries</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_CollectorsVisualConditionResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Check frost protection of Solar Fluid</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SolarFluidFrostProtection")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Solar Fluid Refractometer Reading</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SolarFluidRefractometerReading")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Pressure Relief Valve (PRV) Solar Rated</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_PressureReliefValveRatedResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>PRV Operational</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_PressureReliefValveOperationalResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Discharge Container</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SuitablySizedDischargeContainerResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Checked Discharge Container Fluid</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_CheckedDischargeContainerFluidResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Automatic Air Vents</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_AutoAirVentsServiceableResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Filling Point</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SuitableFillingPointResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Drain Point</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SuitableDrainPointFittedResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Isolation and Check Valves</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_IsolationValvesFittedCorrectlyResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Pressure Gauge</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_PressureGaugeFittedResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Solar Pipework Condition</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SolarPipeworkSoundSupportedResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Solar Pipework Insulation</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SolarPipeworkProtectedResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>All Components are Steam/Solar Rated?</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_ComponentsSteamSolarRatedResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Collector Sensors</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_CollectorSensorsSecureResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Storage Vessel/Cylinder</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_VesselSensorsSecureResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Charge Pressure</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_ChargePressureExVessel")<span class="units">bar</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Solar Fluid topped up?</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_ToppedUpSolarFluidResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>System Pressure</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SystemPressure")<span class="units">bar</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Solar Pump/s</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SolarPumpCorrectSpeedResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Solar Flow Rate Setting</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SolarFlowRate")<span class="units">Ltrs</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>NTCs Operational</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_NTCOperatingCorrectlyResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Controls</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_ControlsWithinManufacturerSpecResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Sizing of Collectors & Cylinder</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_CollectorsCorrectlySizedResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>DHW Blending Valve</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_DHWBlendingValveInstalledResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>DHW Outlet Temperature</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_DHWOutletTemp")<span class="units">&deg;C</span></p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Acceptable Range?</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_DHWOutletTempAcceptableResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="3">
+                            <p>Secondary Heat Source been Interlocked?</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SecondaryHeatSourceInterlockedResult")</p>
+                        </td>
+                        <td class="question" colspan="3">
+                            <p>Electrical Connections Sound & Cables Clipped & Protected</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_ConnectionsSoundAndProtectedResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="7">
+                            <p>Condition</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SolarCondition")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="7">
+                            <p>Is the Solar Appliance Safe to Use?</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_SolarSafeToUseResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="7">
+                            <p>Have you Isolated the Pump Station?</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_IsolatedPumpStationResult")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="7">
+                            <p>Defects Identified?</p>
+                        </td>
+                        <td class="answer">
+                            <p>@(Model.Defects.Any() ? "Yes" : "No")</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question" colspan="7">
+                            <p>Warning Notice / Unsafe Situation Procedure Required?</p>
+                        </td>
+                        <td class="answer">
+                            <p>@Model.Answers.GetValue("E_WarningNoticeRequiredResult")</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

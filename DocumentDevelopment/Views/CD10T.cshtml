@@ -1,0 +1,164 @@
+﻿@model DocumentDevelopment.ViewModels.DataModel
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    @{ await Html.RenderPartialAsync("DocumentStyle"); }
+
+</head>
+
+<body class="main-content container-fluid">
+    <div class="section-full">
+        <div id="logo" alt="" class="col-xs-1"></div>
+        <h1 style="margin-bottom: 0">
+            CD/10T Oil Firing Installation Completion Report
+        </h1>
+        <p class="description">
+            This record is for safety purposes only. This report is vaild for the day of assessment
+            only.
+        </p>
+    </div>
+
+    @{ await Html.RenderPartialAsync("DetailsSection"); }
+
+    <div class="section-half">
+        <div class="content-block">
+            <h2>Oil Storage Details</h2>
+            <table class="content-inner" cellspacing=0>
+                <tr>
+                    <td class="question" colspan="1">
+                        <p>Location</p>
+                    </td>
+                    <td class="answer" colspan="3">
+                        <p>@Model.Appliance.Payload.Location</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question">
+                        <p>Serial Number</p>
+                    </td>
+                    <td class="answer">
+                        <p>@Model.Appliance.Payload.SerialNumber</p>
+                    </td>
+                    <td class="question">
+                        <p>Tank Type</p>
+                    </td>
+                    <td class="answer">
+                        <p>@Model.Appliance.Payload.TankType</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question">
+                        <p>Make</p>
+                    </td>
+                    <td class="answer">
+                        <p>@Model.Appliance.Make</p>
+                    </td>
+                    <td class="question">
+                        <p>Model</p>
+                    </td>
+                    <td class="answer">
+                        <p>@Model.Appliance.Model</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question">
+                        <p>Appliance Condition</p>
+                    </td>
+                    <td class="answer">
+                        <p>@(Model.Answers.GetValue("E_ApplianceCondition"))</p>
+                    </td>
+                    <td class="question">
+                        <p>Landlord's Appliance?</p>
+                    </td>
+                    <td class="answer">
+                        <p>@(Model.Answers.GetValue("E_LandlordsApplianceResult"))</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        @{ await Html.RenderPartialAsync("DefectsSection"); }
+
+    </div>
+    <div class="section-half">
+        <div class="content-block">
+            <h2>Oil Storage Results</h2>
+            <table class=" content-inner" cellspacing=0>
+                <tr>
+                    <td class="question" colspan="8">
+                        <p>T1/133 Spillage and Fire Assessment been completed on the Oil Tank?</p>
+                    </td>
+                    <td class="answer" colspan="2">
+                        <p>@Model.Appliance.FireAssessmentCarriedOut.ToBooleanString("Yes", "No")</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question" colspan="8">
+                        <p>Remote Fill System Fitted and Tested?</p>
+                    </td>
+                    <td class="answer" colspan="2">
+                        <p>@(Model.Answers.GetValue("E_RemoteFillSystemTestedResult"))</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question" colspan="8">
+                        <p>Overfill Alarm Facility Provided?</p>
+                    </td>
+                    <td class="answer" colspan="2">
+                        <p>@(Model.Answers.GetValue("E_OverfillAlarmFittedResult"))</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question" colspan="8">
+                        <p>Oil Supply Line Outside Diameter</p>
+                    </td>
+                    <td class="answer" colspan="2">
+                        <p>@(Model.Answers.GetValue("E_OilSupplyLineOD"))<span class="units"> mm</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question" colspan="8">
+                        <p>Oil Supply Type</p>
+                    </td>
+                    <td class="answer" colspan="2">
+                        <p>@(Model.Answers.GetValue("E_OilSupplyType"))</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question" colspan="8">
+                        <p>Pressure Tested?</p>
+                    </td>
+                    <td class="answer" colspan="2">
+                        <p>@(Model.Answers.GetValue("E_PressureTestedResult"))</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question" colspan="8">
+                        <p>Remote Sensing Fire Valve Fitted?</p>
+                    </td>
+                    <td class="answer" colspan="2">
+                        <p>@(Model.Answers.GetValue("E_RemoteSensingFireValveFittedResult"))</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question" colspan="8">
+                        <p>Oil Pipe Installed as per Manufacturer instruction and British Standards?</p>
+                    </td>
+                    <td class="answer" colspan="2">
+                        <p>@(Model.Answers.GetValue("E_OilPipeMeetsStandardsResult"))</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        @{ await Html.RenderPartialAsync("SignOffSection"); }
+
+    </div>
+</body>
+
+</html>
