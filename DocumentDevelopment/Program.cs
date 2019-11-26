@@ -43,7 +43,6 @@ namespace DocumentDevelopment
                 .AddSingleton<IHostingEnvironment>(environment)
                 .AddSingleton<IHandler, Handler>()
                 .AddSingleton<ITools, PdfTools>()
-                .AddSingleton<IBrowser, Browser>()
                 .AddSingleton<IConverter, SynchronizedConverter>()
                 .AddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>()
                 .AddSingleton<IPdfGenerator, PdfGenerator>()

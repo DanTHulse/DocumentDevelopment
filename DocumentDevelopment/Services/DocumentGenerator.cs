@@ -21,9 +21,9 @@ namespace DocumentDevelopment.Services
             _pdfGenerator = pdfGenerator;
         }
 
-        public async Task<string> CreateDocument(BaseTemplateModel templateModel, PaperworkType paperworkType)
+        public async Task<string> CreateDocument(DataModel data, PaperworkType paperworkType, bool generateHtml)
         {
-            var htmlModel = await _templateRenderer.Render(paperworkType.ToString(), templateModel);
+            var htmlModel = await _templateRenderer.Render(paperworkType.ToString(), data);
 
             var pdfSettings = new PdfDocument
             {
@@ -44,13 +44,24 @@ namespace DocumentDevelopment.Services
                     File.Delete($"{filePath}\\{paperworkType}.pdf");
                 }
 
-                using (var fs = File.OpenWrite($"{filePath}\\{paperworkType}.pdf"))
-                {
-                    pdf.CopyTo(fs);
-                }
+                using var fs = File.OpenWrite($"{filePath}\\{paperworkType}.pdf");
+                pdf.CopyTo(fs);
+            }
+
+            if (generateHtml)
+            {
+                RegenerateHtml(htmlModel, paperworkType);
             }
 
             return htmlModel;
+        }
+
+        private void RegenerateHtml(string html, PaperworkType paperworkType)
+        {
+            var filePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Documents\\Pages\\HTML");
+
+            var filename = $"{filePath}\\{paperworkType}.html";
+            File.WriteAllText(filename, html);
         }
     }
 }

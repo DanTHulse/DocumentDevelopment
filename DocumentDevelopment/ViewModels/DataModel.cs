@@ -5,7 +5,7 @@ using GasTag.Database.Entities;
 
 namespace DocumentDevelopment.ViewModels
 {
-    public class DataModel : BaseTemplateModel
+    public class DataModel
     {
         public PaperworkType DocumentKey { get; set; }
         public DateTimeOffset JobDate { get; set; }
