@@ -6,10 +6,11 @@
         ChimneySweeping = 2,
         Solar = 3,
         ASHP = 4,
-        Unvented = 5,
-        CD10T = 6,
-        CD11 = 7,
-        CD12 = 8,
-        TI133D = 9,
+        UnventedCommision = 5,
+        UnventedServicing = 6,
+        CD10T = 7,
+        CD11 = 8,
+        CD12 = 9,
+        TI133D = 10,
     }
 }
