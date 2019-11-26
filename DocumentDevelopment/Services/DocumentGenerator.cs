@@ -35,7 +35,7 @@ namespace DocumentDevelopment.Services
                 Zoom = 1.27
             };
 
-            var filePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Documents");
+            var filePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Documents\\PDF");
 
             using (var pdf = _pdfGenerator.GeneratePdf(pdfSettings))
             {
