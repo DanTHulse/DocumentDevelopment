@@ -58,7 +58,7 @@ namespace DocumentDevelopment.Services
 
         private void RegenerateHtml(string html, PaperworkType paperworkType)
         {
-            var filePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Documents\\Pages\\HTML");
+            var filePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Documents\\HTML");
 
             var filename = $"{filePath}\\{paperworkType}.html";
             File.WriteAllText(filename, html);
