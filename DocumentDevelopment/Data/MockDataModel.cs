@@ -56,16 +56,17 @@ namespace DocumentDevelopment.Data
                         NextServiceDate = DateTime.Now,
                         SerialNumber = "DN:1234382",
                         FlueType = "CF - Conventional Flue",
-                        Payload = BuildAppliancePayload,
                         FireAssessmentCarriedOut = true,
+                        ApplianceLocation = "Kitchen",
+                        Payload = BuildAppliancePayload,
                     },
                     Answers = BuildAnswers,
                     Chimneys = new List<ApplianceModel>
                     {
                         BuildChimney,
                         BuildChimney,
-                        BuildChimney,
-                        BuildChimney
+                        BuildEmptyChimney,
+                        BuildEmptyChimney
                     },
                     TenantSignatureImage = _sigImage1,
                     EngineerSignatureImage = _sigImage2,
@@ -103,7 +104,6 @@ namespace DocumentDevelopment.Data
                 return new AppliancePayload
                 {
                     Size = "234",
-                    Location = "Kitchen",
                     Output = "234",
                     VentilationType = "Type 1",
                     FuelType = "Oil",
@@ -142,6 +142,17 @@ namespace DocumentDevelopment.Data
             }
         }
 
+        private static ApplianceModel BuildEmptyChimney
+        {
+            get
+            {
+                return new ApplianceModel
+                {
+                    Payload = new AppliancePayload()
+                };
+            }
+        }
+
         private static ApplianceModel BuildChimney
         {
             get
@@ -150,6 +161,12 @@ namespace DocumentDevelopment.Data
                 {
                     Make = "Test Make",
                     Model = "Test Model",
+                    Payload = new AppliancePayload
+                    {
+                        FuelType = "Oil"
+                    },
+                    ApplianceLocation = "Living Room",
+                    NextSweepDate = DateTime.Now.AddYears(1),
                     Answers = new Dictionary<string, object>
                     {
                         // ChimneySweeping
@@ -163,9 +180,10 @@ namespace DocumentDevelopment.Data
                         { "E_SmokeTestTypeTwoResult", "Pass" },
                         { "E_VentilationResult", "Yes" },
                         { "E_CCTVInspectionResult", "Pass" },
-                        { "E_PressureTest", "Tested" },
+                        { "E_PressureTestResult", "Tested" },
                         { "E_SweepMethod", "Montgandy" },
                         { "E_MaintenanceDemonstratedResult", "Yes" },
+                        { "E_UnsafeProcedureRequiredResult", "Yes" },
                     }
                 };
             }
@@ -205,7 +223,6 @@ namespace DocumentDevelopment.Data
                     { "E_ChimneySweptResult", "Yes" },
                     { "E_ClearOfCombustiblesResult", "Yes" },
                     { "E_AllSealsAirtightResult", "Yes" },
-                    { "E_ControlsWorkingResult", "Yes" },
                     { "E_CustomerAwareResult", "Yes" },
                     { "E_BurningSuitableResult", "Yes" },
                     { "E_SmokeDrawTestResult", "Pass" },
@@ -225,16 +242,15 @@ namespace DocumentDevelopment.Data
                     { "E_WetSystemChecksResult", "Yes" },
                     #endregion
 
-                    #region CD12
-                    
+                    #region CD12    
                     { "E_OilSupplyResult", "Pass" },
                     { "E_OilSupplyComments", "Oil supply comments" },
                     { "E_SuitableAirSupplyResult", "Pass" },
                     { "E_AirSupplyComments", "Air supply Pass" },
                     { "E_ChimneyFlueInstalledResult", "Pass" },
                     { "E_ChimneyFlueComments", "Chimney comments" },
-                    { "E_BurnerInstalledResult", "Pass" },
-                    { "E_BurnerComments", "Burner Comments" },
+                    { "E_OilBurnerInstalledResult", "Pass" },
+                    { "E_OilBurnerComments", "Burner Comments" },
                     { "E_SafetyControlsInstalledResult", "Pass" },
                     { "E_SafetyControlsComments", "Pass comments" },
                     { "E_WarningLabelAffixedResult", "Yes" },
@@ -365,7 +381,6 @@ namespace DocumentDevelopment.Data
                     { "E_DischargePipesResult", "Yes" },
                     { "E_WaterInletFilterCleanedResult", "Yes" },
                     { "E_OverheatInterlockResult", "Yes" },
-                    { "E_ControlsWorkingResult", "Yes" },
                     { "E_FittedWithCutOutDeviceResult", "Yes" },
                     { "E_DirectlyFiredThermostatResult", "Yes" },
                     { "E_IndirectlyFiredThermostatResult", "Yes" },
@@ -388,13 +403,14 @@ namespace DocumentDevelopment.Data
                     { "E_PipeworkLaggedResult", "Yes" },
                     { "E_CylinderSupportedResult", "Yes" },
                     { "E_InstallersDetailsDisplayedResult", "Yes" },
-                    { "E_NumberOfImmersionHeatersResult", "1" },
+                    { "E_NumberOfImmersionHeaters", "1" },
                     { "E_ImmersionHeatersOperableResult", "Yes" },
-                    { "E_ReasonImmersionHeatersInoperableResult", "Reasons" },
+                    { "E_ReasonImmersionHeatersInoperable", "Reasons" },
                     { "E_OverheatThermostatOperationalResult", "Yes" },
                     { "E_RefilledVentedAndCheckedLeaksResult", "Yes" },
                     { "E_ApplianceSafeToUseResult", "Yes" },
                     { "E_CheckMotorisedValveResult", "Yes" },
+                    { "E_ImmersionHeaterPresentResult", "Yes" },
                     #endregion
 
                     #region General
@@ -416,6 +432,7 @@ namespace DocumentDevelopment.Data
                     { "E_EfficiencyGross", "85" },
                     { "E_SafeToUseResult", "Yes" },
                     { "E_LandlordsApplianceResult", "Yes" },
+                    { "E_ControlsWorkingResult", "Yes" },
                     #endregion
                 };
             }

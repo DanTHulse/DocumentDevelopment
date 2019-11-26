@@ -251,7 +251,7 @@
                         @foreach (var chimney in Model.Chimneys)
                         {
                             <td class="answer" colspan="2">
-                                <p>@chimney.Answers.GetValue("E_CCTVInspection")</p>
+                                <p>@chimney.Answers.GetValue("E_CCTVInspectionResult")</p>
                             </td>
                         }
                     </tr>
@@ -284,7 +284,7 @@
                         @foreach (var chimney in Model.Chimneys)
                         {
                             <td class="answer" colspan="2">
-                                <p>@(DateTime.Now.AddYears(1).ToString("yyyy-MM-dd"))</p>
+                                <p>@(chimney.NextSweepDate.ToString("yyyy-MM-dd"))</p>
                             </td>
                         }
                     </tr>

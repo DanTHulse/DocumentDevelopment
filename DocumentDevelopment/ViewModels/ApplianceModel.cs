@@ -1,34 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using GasTag.Database.Entities;
 
 namespace DocumentDevelopment.ViewModels
 {
     public class ApplianceModel
     {
-        public string ApplianceId { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
-        public string Location { get; set; }
-        public string ApplianceType { get; set; }
-        public IEnumerable<Tasks> Tasks { get; set; } = new List<Tasks>();
-        public AppliancePayload Payload { get; set; }
-        public string PayloadString { get; set; }
+        public string ApplianceLocation { get; set; }
         public string FlueType { get; set; }
         public string SerialNumber { get; set; }
         public DateTime NextServiceDate { get; set; }
-        public IDictionary<string, object> Answers { get; set; } = new Dictionary<string, object>();
+        public DateTime NextSweepDate { get; set; }
         public bool FireAssessmentCarriedOut { get; set; }
-        public string ApplianceLocation
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(this.Location))
-                    return this.Payload.Location;
 
-                return this.Location;
-            }
-        }
+        public AppliancePayload Payload { get; set; }
+        public IDictionary<string, object> Answers { get; set; } = new Dictionary<string, object>();
     }
 
     public class AppliancePayload
