@@ -21,7 +21,7 @@ namespace DocumentDevelopment.Services
             _pdfGenerator = pdfGenerator;
         }
 
-        public async Task<PaperworkType> CreateDocument(BaseTemplateModel templateModel, PaperworkType paperworkType)
+        public async Task<string> CreateDocument(BaseTemplateModel templateModel, PaperworkType paperworkType)
         {
             var htmlModel = await _templateRenderer.Render(paperworkType.ToString(), templateModel);
 
@@ -50,7 +50,7 @@ namespace DocumentDevelopment.Services
                 }
             }
 
-            return paperworkType;
+            return htmlModel;
         }
     }
 }

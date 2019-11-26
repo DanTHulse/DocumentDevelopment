@@ -6,6 +6,6 @@ namespace DocumentDevelopment.Services.Interfaces
 {
     public interface IDocumentGenerator
     {
-        Task<PaperworkType> CreateDocument(BaseTemplateModel templateModel, PaperworkType paperworkType);
+        Task<string> CreateDocument(BaseTemplateModel templateModel, PaperworkType paperworkType);
     }
 }

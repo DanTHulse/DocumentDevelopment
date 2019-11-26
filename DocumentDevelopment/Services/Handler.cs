@@ -10,10 +10,12 @@ namespace DocumentDevelopment.Services
     public class Handler : IHandler
     {
         private readonly IDocumentGenerator _generator;
+        private readonly IBrowser _browser;
 
-        public Handler(IDocumentGenerator generator)
+        public Handler(IDocumentGenerator generator, IBrowser browser)
         {
             _generator = generator;
+            _browser = browser;
         }
 
         public async Task Run()
@@ -35,7 +37,10 @@ namespace DocumentDevelopment.Services
 
                     var choice = (PaperworkType)ConsoleHelpers.ReadNumber();
 
-                    mockData.DocumentKey = await _generator.CreateDocument(mockData, choice);
+                    mockData.DocumentKey = choice;
+                    var model = await _generator.CreateDocument(mockData, choice);
+
+                    _browser.Display(model, choice);
 
                     Console.WriteLine("\n\n\nIteration Complete");
                     Console.WriteLine("\nRun again? [ y / N ]");

@@ -18,19 +18,13 @@ namespace DocumentDevelopment.Data
                     {
                         BusinessRegId = "12343",
                         Name = "Test Contractor",
-                        Address = new Address
-                        {
-                            AddressOne = "13th Floor Unity Building",
-                            AddressTwo = "20 Chapel Street",
-                            City = "Liverpool",
-                            County = "Merseyside",
-                            Postcode = "L39AG"
-                        },
+                        Address = BuildAddress,
                         TelephoneNum = "01512219889"
                     },
                     Company = new Companies
                     {
                         CompanyName = "Test Contractor",
+                        Address = BuildAddress
                     },
                     Engineer = new EngineerDetailsModel
                     {
@@ -38,6 +32,7 @@ namespace DocumentDevelopment.Data
                         LastName = "Engineer",
                         TelephoneNum = "015122187785",
                         EngineerSignature = "636619011151517000.png",
+                        GasSafeId = 12343823
                     },
                     Property = new Properties
                     {
@@ -51,70 +46,20 @@ namespace DocumentDevelopment.Data
                     },
                     Landlord = new Landlord
                     {
-                        Address = BuildAddress
+                        Address = BuildAddress,
+                        Name = "Jane Lords"
                     },
                     Appliance = new ApplianceModel
                     {
                         Make = "Test Make",
                         Model = "Test Model",
                         NextServiceDate = DateTime.Now,
-                        Payload = new AppliancePayload
-                        {
-                            FuelType = "Oil",
-                            Location = "Test Location",
-                            Output = "234",
-                            Size = "234",
-                            VentilationType = "Type 1",
-                        }
+                        SerialNumber = "DN:1234382",
+                        FlueType = "CF - Conventional Flue",
+                        Payload = BuildAppliancePayload,
+                        FireAssessmentCarriedOut = true,
                     },
-                    Answers = new Dictionary<string, object>
-                    {
-                        { "E_SuitableHearthResult", "Yes" },
-                        { "E_VentilationSufficientResult", "Yes" },
-                        { "E_ChimneyConditionSoundResult", "Yes" },
-                        { "E_COAlarmFittedResult", "Yes" },
-                        { "E_TerminationHeightResult", "Yes" },
-                        { "E_InformationAvailableResult", "Yes" },
-                        { "E_ChimneySweptResult", "Yes" },
-                        { "E_ClearOfCombustiblesResult", "Yes" },
-                        { "E_AllSealsAirtightResult", "Yes" },
-                        { "E_ControlsWorkingResult", "Yes" },
-                        { "E_BurningSuitableResult", "Yes" },
-                        { "E_ManufacturerRangeResult", "Yes" },
-                        { "E_GeneralChecksUndertakenResult", "Yes" },
-                        { "E_BoilerConnectionsResult", "Yes" },
-                        { "E_StorageTypeResult", "Yes" },
-                        { "E_StorageLocationResult", "Yes" },
-                        { "E_FETankTypeResult", "Yes" },
-                        { "E_SystemControlsResult", "Yes" },
-                        { "E_SystemCheckedResult", "Yes" },
-                        { "E_WarningNoticeRequiredResult", "Yes" },
-                        { "E_CustomerAwareResult", "Yes" },
-                        { "E_ServicePassedResult", "Yes" },
-                        { "E_WetSystemChecksResult", "Yes" },
-                        { "E_FlueDraught", "2" },
-                        { "E_SmokePressureTestResult", "Pass" },
-                        { "E_SmokeDrawTestResult", "Pass" },
-                        { "E_FlueDraughtExtractionTestResult", "Pass" },
-                        { "E_SpillageTestResult", "Pass" },
-                        { "E_SmokePressureTestNotes", "tested" },
-                        { "E_SmokeDrawTestNotes", "tested" },
-                        { "E_FlueDraughtExtractionTestNotes", "tested" },
-                        { "E_SpillageTestNotes", "testsed" },
-                        { "E_TenantSignaturePath", "636622453625998680.png" },
-                        { "E_AdditionalNotes", "Called gas" },
-
-                        { "E_Defect_5", "All defects 5" },
-                        { "E_Defect_1", "All defects 1" },
-                        { "E_RemedialRecommendations_1", "recs 1" },
-                        { "E_RemedialRecommendations_5", "recs 5" },
-                        { "E_Defect_2", "All defects 2" },
-                        { "E_RemedialRecommendations_2", "recs 2" },
-                        { "E_Defect_3", "All defects 3" },
-                        { "E_RemedialRecommendations_3", "recs 3" },
-                        { "E_Defect_4", "All defects 4" },
-                        { "E_RemedialRecommendations_4", "recs 4" }
-                    },
+                    Answers = BuildAnswers,
                     Chimneys = new List<ApplianceModel>
                     {
                         BuildChimney,
@@ -151,6 +96,52 @@ namespace DocumentDevelopment.Data
             }
         }
 
+        private static AppliancePayload BuildAppliancePayload
+        {
+            get
+            {
+                return new AppliancePayload
+                {
+                    Size = "234",
+                    Location = "Kitchen",
+                    Output = "234",
+                    VentilationType = "Type 1",
+                    FuelType = "Oil",
+                    SystemType = "TS-T",
+                    ApplianceCondition = "Very Good",
+                    LandlordsAppliance = true,
+                    Capacity = 1000,
+                    ControlSystemType = "Test",
+                    HeatSourceType = "Oil",
+                    CollectorMake = "Test Collector",
+                    CollectorModel = "Collector Model",
+                    CollectorSerialNumber = "CS-123432",
+                    CollectorType = "Internal",
+                    NumberOfCollectors = "2",
+                    CylinderMake = "Test Cylinder",
+                    CylinderModel = "Cylinder Model",
+                    CylinderSerialNumber = "Cy-12ds",
+                    CylinderType = "Fluted",
+                    CylinderSize = "200l",
+                    DHWCylinderManufacturer = "Clyde",
+                    OilBurnerMake = "Test Oil Burner",
+                    OilBurnerModel = "Oil Burner Model",
+                    OilBurnerType = "Open",
+                    PumpStationMake = "Test Pump Station",
+                    PumpStationModel = "Pump Station Model",
+                    PumpStationSerialNumber = "PS-2RT2",
+                    NumberOfPumps = "4",
+                    TankMake = "Test Tank",
+                    TankType = "Open",
+                    DrainBackTankMake = "Test Drain Back",
+                    DrainBackTankModel = "Drain Back Model",
+                    DrainBackTankSerialNumber = "DBT-3f",
+                    ExpansionVesselSize = "2000l",
+                    ExVesselPreChargeSetting = "243",
+                };
+            }
+        }
+
         private static ApplianceModel BuildChimney
         {
             get
@@ -161,22 +152,271 @@ namespace DocumentDevelopment.Data
                     Model = "Test Model",
                     Answers = new Dictionary<string, object>
                     {
+                        // ChimneySweeping
                         { "E_FlueResult", "Pass" },
                         { "E_StackResult", "Pass" },
                         { "E_PotResult", "Pass" },
                         { "E_CowlResult", "Pass" },
-                        { "E_SmokeTestTypeTwoResult", "Pass" },
-                        { "E_CCTVInspectionResult", "Pass" },
                         { "E_DepositRemoved", "Soot" },
-                        { "E_LinerCondition", "Very Good" },
+                        { "E_DepositDetail", "Soot in Flue" },
                         { "E_FireRiskResult", "Yes" },
+                        { "E_SmokeTestTypeTwoResult", "Pass" },
                         { "E_VentilationResult", "Yes" },
-                        { "E_MaintenanceDemonstratedResult", "Yes" },
+                        { "E_CCTVInspectionResult", "Pass" },
                         { "E_PressureTest", "Tested" },
                         { "E_SweepMethod", "Montgandy" },
-                        { "E_ConditionNotes", "Some extra notes" },
-                        { "E_VisualNotes", "Visual notes" }
+                        { "E_MaintenanceDemonstratedResult", "Yes" },
                     }
+                };
+            }
+        }
+
+        private static Dictionary<string, object> BuildAnswers
+        {
+            get
+            {
+                return new Dictionary<string, object>
+                {
+                    #region ASHP
+                    { "E_ExpansionVesselChargeCheckedResult", "Yes" },
+                    { "E_MagneticFilterCleanedResult", "Yes" },
+                    { "E_GlycolConcentration", "20" },
+                    { "E_GlycolConcetrationMeetsSpecsResult", "Yes" },
+                    { "E_VisualInspectionOfPipeworkResult", "Yes" },
+                    { "E_CompressorRunningCurrent", "1234" },
+                    { "E_OperationChecksResult", "Yes" },
+                    { "E_MotorisedValvesCheckedResult", "Yes" },
+                    { "E_HeatExchangerInspectedResult", "Yes" },
+                    { "E_YStrainerInspectedResult", "Yes" },
+                    { "E_ElectricalConnectionsCheckedResult", "Yes" },
+                    { "E_IntegrityOfWaterPiperworkResult", "Yes" },
+                    { "E_OperationVoltageCheckedResult", "Yes" },
+                    { "E_InspectedForSignsOfLeaksResult", "Yes" },
+                    { "E_FuseRating", "12" },
+                    #endregion
+
+                    #region SolidFuelServicing
+                    { "E_SuitableHearthResult", "Yes" },
+                    { "E_VentilationSufficientResult", "Yes" },
+                    { "E_ChimneyConditionSoundResult", "Yes" },
+                    { "E_COAlarmFittedResult", "Yes" },
+                    { "E_TerminationHeightResult", "Yes" },
+                    { "E_InformationAvailableResult", "Yes" },
+                    { "E_ChimneySweptResult", "Yes" },
+                    { "E_ClearOfCombustiblesResult", "Yes" },
+                    { "E_AllSealsAirtightResult", "Yes" },
+                    { "E_ControlsWorkingResult", "Yes" },
+                    { "E_CustomerAwareResult", "Yes" },
+                    { "E_BurningSuitableResult", "Yes" },
+                    { "E_SmokeDrawTestResult", "Pass" },
+                    { "E_SmokeDrawTestNotes", "smoke draw tested" },
+                    { "E_FlueDraughtExtractionTestResult", "Pass" },
+                    { "E_FlueDraughtExtractionTestNotes", "flue draught tested" },
+                    { "E_SpillageTestResult", "Pass" },
+                    { "E_SpillageTestNotes", "spillage tested" },
+                    { "E_GeneralChecksUndertakenResult", "Yes" },
+                    { "E_BoilerConnectionsResult", "Yes" },
+                    { "E_StorageTypeResult", "Yes" },
+                    { "E_StorageLocationResult", "Yes" },
+                    { "E_FETankTypeResult", "Yes" },
+                    { "E_SystemControlsResult", "Yes" },
+                    { "E_SystemCheckedResult", "Yes" },
+                    { "E_ServicePassedResult", "Yes" },
+                    { "E_WetSystemChecksResult", "Yes" },
+                    #endregion
+
+                    #region CD12
+                    
+                    { "E_OilSupplyResult", "Pass" },
+                    { "E_OilSupplyComments", "Oil supply comments" },
+                    { "E_SuitableAirSupplyResult", "Pass" },
+                    { "E_AirSupplyComments", "Air supply Pass" },
+                    { "E_ChimneyFlueInstalledResult", "Pass" },
+                    { "E_ChimneyFlueComments", "Chimney comments" },
+                    { "E_BurnerInstalledResult", "Pass" },
+                    { "E_BurnerComments", "Burner Comments" },
+                    { "E_SafetyControlsInstalledResult", "Pass" },
+                    { "E_SafetyControlsComments", "Pass comments" },
+                    { "E_WarningLabelAffixedResult", "Yes" },
+                    { "E_UrgentFaultsResult", "Yes" },
+                    { "E_ShouldEquipmentBeUsedResult", "Yes" },
+                    { "E_SpillageFireAssessmentFormCompleted", "Yes" },
+                    #endregion
+
+                    #region CD11
+                    { "E_CallType", "Service" },
+                    { "E_OilSupplyDefectsResult", "Yes" },
+                    { "E_AdequateVentilationResult", "Yes" },
+                    { "E_FlueInstalledToInstructionResult", "Yes" },
+                    { "E_ApplianceFuseRating", "23" },
+                    { "E_FuseRatingWithinManufacturerRangeResult", "Yes" },
+                    { "E_CheckedApplianceSafetyControlsResult", "Yes" },
+                    { "E_CombustionChamberCleanedToInstructionResult", "Yes" },
+                    { "E_AreAppliancesElectricallySafeResult", "Yes" },
+                    { "E_HeatExchangerCleanedToInstructionResult", "Yes" },
+                    { "E_PressureJetCleanedToInstructionResult", "Yes" },
+                    { "E_VaporisingWallflameChecksResult", "Yes" },
+                    { "E_WallflameFurtherChecksResult", "Yes" },
+                    { "E_CheckedControlsResult", "Yes" },
+                    { "E_HotWaterChecksPerformedResult", "Yes" },
+                    { "E_WarmAirChecksPerformedResult", "Yes" },
+                    { "E_NozzleSize", "200" },
+                    { "E_NozzleAngle", "20" },
+                    { "E_NozzlePattern", "Flat" },
+                    { "E_FlowRateOilLow", "360" },
+                    { "E_FlowRateOilHigh", "380" },
+                    { "E_FlowRateDHWCold", "520" },
+                    { "E_FlowRateDHWHot", "550" },
+                    { "E_COCO2Ratio", "1:2500" },
+                    { "E_ExcessAir", "15" },
+                    #endregion
+
+                    #region CD10T
+                    { "E_RemoteFillSystemTestedResult", "Yes" },
+                    { "E_OverfillAlarmFittedResult", "Yes" },
+                    { "E_OilSupplyLineOD", "550" },
+                    { "E_OilSupplyType", "Metal" },
+                    { "E_PressureTestedResult", "Yes" },
+                    { "E_RemoteSensingFireValveFittedResult", "Yes" },
+                    { "E_OilPipeMeetsStandardsResult", "Yes" },
+                    #endregion
+
+                    #region TI133D
+                    { "E_TankLocatedInJerseyGuernseyResult", "Yes" },
+                    { "E_TankLocationInWalesResult", "Yes" },
+                    { "E_TankCapacityOver2500Result", "Yes" },
+                    { "E_TankCloseToControlledWaterResult", "Yes" },
+                    { "E_TankLocatedNearDrainResult", "Yes" },
+                    { "E_TankCloseToBoreholeResult", "Yes" },
+                    { "E_TankOverHardGroundResult", "Yes" },
+                    { "E_VentPipeNotVisibleFromFillPointResult", "Yes" },
+                    { "E_TankSupplyNonSingleFamilyDwellingResult", "Yes" },
+                    { "E_OtherPotentialFireHazardResult", "Yes" },
+                    { "E_TankLocatedInFloodHighWindRiskResult", "Yes" },
+                    { "E_TankRestraintProvdedResult", "Yes" },
+                    { "E_TankCloseToNonFireWallResult", "Yes" },
+                    { "E_TankCloseToNonFireBoundaryResult", "Yes" },
+                    { "E_TankCloseToNonFireEavesResult", "Yes" },
+                    { "E_TankCloseToConstructionOpeningResult", "Yes" },
+                    { "E_TankCloseToFlueTerminationResult", "Yes" },
+                    { "E_HasBase300mmAroundTankResult", "Yes" },
+                    { "E_FireProtectionProvidedResult", "Yes" },
+                    #endregion
+
+                    #region Solar
+                    { "E_InitialSystemPressure", "1234" },
+                    { "E_InitialSystemPressureCorrectResult", "Yes" },
+                    { "E_CollectorsVisualConditionResult", "Yes" },
+                    { "E_SolarFluidFrostProtectionResult", "Yes" },
+                    { "E_SolarFluidRefractometerReading", "12345" },
+                    { "E_PressureReliefValveRatedResult", "Yes" },
+                    { "E_PressureReliefValveOperationalResult", "Yes" },
+                    { "E_SuitablySizedDischargeContainerResult", "Yes" },
+                    { "E_CheckedDischargeContainerFluidResult", "Yes" },
+                    { "E_AutoAirVentsServiceableResult", "Yes" },
+                    { "E_SuitableFillingPointResult", "Yes" },
+                    { "E_SuitableDrainPointFittedResult", "Yes" },
+                    { "E_IsolationValvesFittedCorrectlyResult", "Yes" },
+                    { "E_PressureGaugeFittedResult", "Yes" },
+                    { "E_SolarPipeworkSoundSupportedResult", "Yes" },
+                    { "E_SolarPipeworkProtectedResult", "Yes" },
+                    { "E_ComponentsSteamSolarRatedResult", "Yes" },
+                    { "E_CollectorSensorsSecureResult", "Yes" },
+                    { "E_VesselSensorsSecureResult", "Yes" },
+                    { "E_ChargePressureExVessel", "123" },
+                    { "E_ToppedUpSolarFluidResult", "Yes" },
+                    { "E_SystemPressure", "123" },
+                    { "E_SolarPumpCorrectSpeedResult", "Yes" },
+                    { "E_SolarFlowRate", "123" },
+                    { "E_NTCOperatingCorrectlyResult", "Yes" },
+                    { "E_ControlsWithinManufacturerSpecResult", "Yes" },
+                    { "E_CollectorsCorrectlySizedResult", "Yes" },
+                    { "E_DHWBlendingValveInstalledResult", "Yes" },
+                    { "E_DHWOutletTemp", "12" },
+                    { "E_DHWOutletTempAcceptableResult", "Yes" },
+                    { "E_SecondaryHeatSourceInterlockedResult", "Yes" },
+                    { "E_ConnectionsSoundAndProtectedResult", "Yes" },
+                    { "E_SolarConditionResult", "Yes" },
+                    { "E_SolarSafeToUseResult", "Yes" },
+                    { "E_IsolatedPumpStationResult", "Yes" },
+                    #endregion
+
+                    #region Unvented
+                    { "E_SolarRenewablesCompatibleResult", "Yes" },
+                    { "E_PrimaryHeatsource", "Sealed" },
+                    { "E_HeatsourceTypeResult", "Direct" },
+                    { "E_GasBoilerResult", "Yes" },
+                    { "E_OilBoilerResult", "Yes" },
+                    { "E_SolarResult", "Yes" },
+                    { "E_ImmersionHeaterResult", "Yes" },
+                    { "E_MaximumFlowTemp", "12" },
+                    { "E_InletWaterPressure", "123" },
+                    { "E_PressureValveSetting", "123" },
+                    { "E_ServiceValveWorkingResult", "Yes" },
+                    { "E_ProvisionForExpansionResult", "Yes" },
+                    { "E_ExpansionType", "Open Vented" },
+                    { "E_ExpansionVesselSize", "123" },
+                    { "E_VesselSuitableForPotableWaterResult", "Yes" },
+                    { "E_ExpansionCorrectChargeResult", "Yes" },
+                    { "E_ExpansionRechargedResult", "Yes" },
+                    { "E_ReliefValveServiceabilityResult", "Yes" },
+                    { "E_TemperatureReliefValvePressentResult", "Yes" },
+                    { "E_TemperatureReliefValveOperationResult", "Yes" },
+                    { "E_DischargePipesResult", "Yes" },
+                    { "E_WaterInletFilterCleanedResult", "Yes" },
+                    { "E_OverheatInterlockResult", "Yes" },
+                    { "E_ControlsWorkingResult", "Yes" },
+                    { "E_FittedWithCutOutDeviceResult", "Yes" },
+                    { "E_DirectlyFiredThermostatResult", "Yes" },
+                    { "E_IndirectlyFiredThermostatResult", "Yes" },
+                    { "E_ColdWaterTeeFittedResult", "Yes" },
+                    { "E_D1D2MaterialSuitableResult", "Yes" },
+                    { "E_D1FittedToStandardsResult", "Yes" },
+                    { "E_TundishFittedCorrectlyResult", "Yes" },
+                    { "E_D2FittedToStandardsResult", "Yes" },
+                    { "E_D2PipeworkCorrectlyTerminatedResult", "Yes" },
+                    { "E_ElectricalConnectionsSoundResult", "Yes" },
+                    { "E_MaxDHWFlowRate", "123" },
+                    { "E_HotWaterThermostatTemp", "55" },
+                    { "E_DHWMixingValveFittedResult", "Yes" },
+                    { "E_DHWMixingValveTemp", "55" },
+                    { "E_HotWaterTempAtOutlet", "55" },
+                    { "E_StoreTempAchievable", "75" },
+                    { "E_MaxHotWaterTemp", "75" },
+                    { "E_HotAndColdSuppliesBalancedResult", "Yes" },
+                    { "E_PipeworkSupportedResult", "Yes" },
+                    { "E_PipeworkLaggedResult", "Yes" },
+                    { "E_CylinderSupportedResult", "Yes" },
+                    { "E_InstallersDetailsDisplayedResult", "Yes" },
+                    { "E_NumberOfImmersionHeatersResult", "1" },
+                    { "E_ImmersionHeatersOperableResult", "Yes" },
+                    { "E_ReasonImmersionHeatersInoperableResult", "Reasons" },
+                    { "E_OverheatThermostatOperationalResult", "Yes" },
+                    { "E_RefilledVentedAndCheckedLeaksResult", "Yes" },
+                    { "E_ApplianceSafeToUseResult", "Yes" },
+                    { "E_CheckMotorisedValveResult", "Yes" },
+                    #endregion
+
+                    #region General
+                    { "E_PrintName", "John Doe" },
+                    { "E_AdditionalNotes", "Called gas" },
+                    { "E_ApplianceCondition", "Very Good" },
+                    { "E_WarningNoticeRequiredResult", "Yes" },
+                    { "E_SmokeNumber", "2" },
+                    { "E_Draught", "65" },
+                    { "E_DraughtItem", "inWG" },
+                    { "E_CO", "0.001" },
+                    { "E_CO2", "25.1" },
+                    { "E_FlueGasTemp", "45" },
+                    { "E_PumpPressure", "100" },
+                    { "E_PumpPressureItem", "psi" },
+                    { "E_PumpVacuum", "202" },
+                    { "E_PumpVacuumItem", "psi" },
+                    { "E_EfficiencyNett", "89" },
+                    { "E_EfficiencyGross", "85" },
+                    { "E_SafeToUseResult", "Yes" },
+                    { "E_LandlordsApplianceResult", "Yes" },
+                    #endregion
                 };
             }
         }
