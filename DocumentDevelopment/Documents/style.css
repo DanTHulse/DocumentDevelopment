@@ -20,7 +20,7 @@ html * {
 .description {
   margin: 0;
   overflow-wrap: break-word;
-  padding: 2px 1px 13px 5px;
+  padding: 2px 1px 1px 5px;
   font-size: 11px;
 }
 
@@ -38,6 +38,14 @@ html * {
 
 .section-header-alt {
   background-color: #606060 !important;
+}
+
+.sub-section-header {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: #0a6fb8;
+  color: white;
+  text-align: center;
 }
 
 .section {
@@ -106,12 +114,17 @@ html * {
 
 .question-alt {
   background-color: #d4d4d4 !important;
+  border: 1px solid #606060 !important;
 }
 
 .answer {
   text-align: left;
   border: 1px solid #0a6fb8;
   padding: 2px 1px 3px 5px;
+}
+
+.answer-alt {
+  border: 1px solid #606060 !important;
 }
 
 .units {
@@ -125,7 +138,7 @@ html * {
 }
 
 .spacing-header {
-  width: 150%;
+  width: 180px !important;
   background-color: transparent;
   border: none;
 }
@@ -143,13 +156,11 @@ tr:last-child td:last-child {
 }
 
 th:first-child {
-  border-radius: 10px 0 0 0;
-  width: 6px;
+  border-top-left-radius: 10px;
 }
 
 th:last-child {
-  border-radius: 0 10px 0 0;
-  width: 120px;
+  border-top-right-radius: 10px;
 }
 
 .logo {
