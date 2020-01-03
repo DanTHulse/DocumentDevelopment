@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using DocumentDevelopment.Data;
 using DocumentDevelopment.Helpers;
 using DocumentDevelopment.Services.Interfaces;
-using DocumentDevelopment.Utils.Models;
 using DocumentDevelopment.ViewModels;
 
 namespace DocumentDevelopment.Services
@@ -47,7 +46,7 @@ namespace DocumentDevelopment.Services
             }
         }
 
-        private async Task HandleAll(DataModel mockData, bool generateHtml)
+        private async Task HandleAll(DocumentData mockData, bool generateHtml)
         {
             foreach (var type in EnumHelpers.EnumToList<PaperworkType>())
             {

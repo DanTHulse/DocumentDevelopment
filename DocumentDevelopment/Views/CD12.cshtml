@@ -1,4 +1,4 @@
-﻿@model DocumentDevelopment.ViewModels.DataModel
+﻿@model DocumentDevelopment.ViewModels.DocumentData
 @using DocumentDevelopment.Helpers;
 
 <!DOCTYPE html>
@@ -11,10 +11,10 @@
 
 </head>
 
-<body class="main-content container-fluid">
-    <div class="section-full">
-        <div id="logo" alt="" class="col-xs-1"></div>
-        <h1 style="margin-bottom: 0">
+<body class="main-content">
+    <div class="section section-full">
+        <img class="logo" src="https://gastag.s3-eu-west-1.amazonaws.com/RefImages/Emails/Logo-plus-Tagline.png" />
+        <h1 class="title">
             CD/12 Landlord Oil Installation Check
         </h1>
         <p class="description">
@@ -25,286 +25,278 @@
 
     @{ await Html.RenderPartialAsync("DetailsSection"); }
 
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Appliance Details</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="1">
-                        <p>Location</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@Model.Appliance.ApplianceLocation</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Make</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Appliance.Make</p>
-                    </td>
-                    <td class="question">
-                        <p>Model</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Appliance.Model</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="1">
-                        <p>Serial Number</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@Model.Appliance.SerialNumber</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Burner Make</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Appliance.Payload.OilBurnerMake)</p>
-                    </td>
-                    <td class="question">
-                        <p>Burner Model</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Appliance.Payload.OilBurnerModel)</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Burner Type</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Appliance.Payload.OilBurnerType)</p>
-                    </td>
-                    <td class="question">
-                        <p>Tank Type</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Appliance.Payload.TankType)</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Flue Type</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Appliance.FlueType</p>
-                    </td>
-                    <td class="question">
-                        <p>Fuel Type</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Appliance.Payload.FuelType</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Appliance Condition</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_ApplianceCondition"))</p>
-                    </td>
-                    <td class="question">
-                        <p>Landlord's Appliance?</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_LandlordsApplianceResult"))</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <div class="section section-half">
+        <h2 class="section-header">Appliance Details</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="1">
+                    Location
+                </td>
+                <td class="answer" colspan="3">
+                    @Model.Appliance.ApplianceLocation
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Make
+                </td>
+                <td class="answer">
+                    @Model.Appliance.Make
+                </td>
+                <td class="question">
+                    Model
+                </td>
+                <td class="answer">
+                    @Model.Appliance.Model
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="1">
+                    Serial Number
+                </td>
+                <td class="answer" colspan="3">
+                    @Model.Appliance.SerialNumber
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Burner Make
+                </td>
+                <td class="answer">
+                    @Model.Appliance.Payload.GetValue("E_OilBurnerMake")
+                </td>
+                <td class="question">
+                    Burner Model
+                </td>
+                <td class="answer">
+                    @Model.Appliance.Payload.GetValue("E_OilBurnerModel")
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Burner Type
+                </td>
+                <td class="answer">
+                    @Model.Appliance.Payload.GetValue("E_OilBurnerType")
+                </td>
+                <td class="question">
+                    Tank Type
+                </td>
+                <td class="answer">
+                    @Model.Appliance.Payload.GetValue("E_TankType")
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Flue Type
+                </td>
+                <td class="answer">
+                    @Model.Appliance.FlueType
+                </td>
+                <td class="question">
+                    Fuel Type
+                </td>
+                <td class="answer">
+                    @Model.Appliance.Payload.GetValue("E_FuelType")
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Appliance Condition
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_ApplianceCondition")
+                </td>
+                <td class="question">
+                    Landlord's Appliance?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_LandlordsApplianceResult")
+                </td>
+            </tr>
+        </table>
 
-        <div class="content-block">
-            <h2>Schedule</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="1">
-                        <p>Oil Storage</p>
-                    </td>
-                    <td class="answer" colspan="1">
-                        <p>@(Model.Answers.GetValue("E_OilSupplyResult"))</p>
-                    </td>
-                    <td class="question" colspan="1">
-                        <p>Comments</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_OilSupplyComments"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Air Supply</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_SuitableAirSupplyResult"))</p>
-                    </td>
-                    <td class="question">
-                        <p>Comments</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_AirSupplyComments"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Chimney/FLue</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_ChimneyFlueInstalledResult"))</p>
-                    </td>
-                    <td class="question">
-                        <p>Comments</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_ChimneyFlueComments"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Burner</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_OilBurnerInstalledResult"))</p>
-                    </td>
-                    <td class="question">
-                        <p>Comments</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_OilBurnerComments"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Safety Controls</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_SafetyControlsInstalledResult"))</p>
-                    </td>
-                    <td class="question">
-                        <p>Comments</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_SafetyControlsComments"))</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <h2 class="section-header">Schedule</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="1">
+                    Oil Storage
+                </td>
+                <td class="answer" colspan="1">
+                    @Model.Answers.GetValue("E_OilSupplyResult")
+                </td>
+                <td class="question" colspan="1">
+                    Comments
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_OilSupplyComments")
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Air Supply
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_SuitableAirSupplyResult")
+                </td>
+                <td class="question">
+                    Comments
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_AirSupplyComments")
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Chimney/FLue
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_ChimneyFlueInstalledResult")
+                </td>
+                <td class="question">
+                    Comments
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_ChimneyFlueComments")
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Burner
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_OilBurnerInstalledResult")
+                </td>
+                <td class="question">
+                    Comments
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_OilBurnerComments")
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Safety Controls
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_SafetyControlsInstalledResult")
+                </td>
+                <td class="question">
+                    Comments
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_SafetyControlsComments")
+                </td>
+            </tr>
+        </table>
 
-        <div class="content-block">
-            <h2>Faults</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="7">
-                        <p>Has a warning label been affixed to the equipment?</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_WarningLabelAffixedResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="7">
-                        <p>Is it strongly recommended that these faults are remedied urgently?</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_UrgentFaultsResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="7">
-                        <p>The equipment should not be used unitl the faults are rectified?</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_ShouldEquipmentBeUsedResult"))</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <h2 class="section-header">Faults</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="7">
+                    Has a warning label been affixed to the equipment?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_WarningLabelAffixedResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="7">
+                    Is it strongly recommended that these faults are remedied urgently?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_UrgentFaultsResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="7">
+                    The equipment should not be used unitl the faults are rectified?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_ShouldEquipmentBeUsedResult")
+                </td>
+            </tr>
+        </table>
     </div>
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Test Results</h2>
-            <table class=" content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="1">
-                        <p>Smoke No.</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_SmokeNumber"))</p>
-                    </td>
-                    <td class="question" colspan="1">
-                        <p>Draught</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_Draught"))<span class="units"> @(Model.Answers.GetValue("E_DraughtItem"))</span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="1">
-                        <p>CO</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_CO"))<span class="units"> ppm</span></p>
-                    </td>
-                    <td class="question" colspan="1">
-                        <p>CO<sub>2</sub></p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_CO2"))<span class="units"> %</span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Flue Gas Temp:</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_FlueGasTemp"))<span class="units"> &deg;</span></p>
-                    </td>
-                    <td class="question">
-                        <p>Pump Pressure</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_PumpPressure"))<span class="units"> @(Model.Answers.GetValue("E_PumpPressureItem"))</span></p>
-                    </td>
-                    <td class="question">
-                        <p>Pump Vacuum</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Answers.GetValue("E_PumpVacuum"))<span class="units"> @(Model.Answers.GetValue("E_PumpVacuumItem"))</span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="1">
-                        <p>Efficiency Nett:</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_EfficiencyNett"))<span class="units"> %</span></p>
-                    </td>
-                    <td class="question" colspan="1">
-                        <p>Efficiency Gross:</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_EfficiencyGross"))<span class="units"> %</span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="5">
-                        <p>Has a T1/133 Spillage and Fire Risk Assessment been carried out?</p>
-                    </td>
-                    <td class="answer" colspan="1">
-                        <p>@(Model.Appliance.FireAssessmentCarriedOut.ToBooleanString("Yes", "No"))</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+
+    <div class="section section-half">
+        <h2 class="section-header">Test Results</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="1">
+                    Smoke No.
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_SmokeNumber")
+                </td>
+                <td class="question" colspan="1">
+                    Draught
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_Draught")<span class="units"> @Model.Answers.GetValue("E_DraughtItem")</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="1">
+                    CO
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_CO")<span class="units"> ppm</span>
+                </td>
+                <td class="question" colspan="1">
+                    CO<sub>2</sub>
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_CO2")<span class="units"> %</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Flue Gas Temp:
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_FlueGasTemp")<span class="units"> &deg;</span>
+                </td>
+                <td class="question">
+                    Pump Pressure
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_PumpPressure")<span class="units"> @Model.Answers.GetValue("E_PumpPressureItem")</span>
+                </td>
+                <td class="question">
+                    Pump Vacuum
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_PumpVacuum")<span class="units"> @Model.Answers.GetValue("E_PumpVacuumItem")</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="1">
+                    Efficiency Nett:
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_EfficiencyNett")<span class="units"> %</span>
+                </td>
+                <td class="question" colspan="1">
+                    Efficiency Gross:
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_EfficiencyGross")<span class="units"> %</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="5">
+                    Has a T1/133 Spillage and Fire Risk Assessment been carried out?
+                </td>
+                <td class="answer" colspan="1">
+                    @Model.Appliance.FireAssessmentCarriedOut.ToBooleanString("Yes", "No")
+                </td>
+            </tr>
+        </table>
 
         @{ await Html.RenderPartialAsync("DefectsSection"); }
 
         @{ await Html.RenderPartialAsync("SignOffSection"); }
-
     </div>
 </body>
 

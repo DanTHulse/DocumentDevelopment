@@ -1,4 +1,4 @@
-﻿@model DocumentDevelopment.ViewModels.DataModel
+﻿@model DocumentDevelopment.ViewModels.DocumentData
 @using DocumentDevelopment.Helpers;
 
 <!DOCTYPE html>
@@ -8,13 +8,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     @{ await Html.RenderPartialAsync("DocumentStyle"); }
-
 </head>
 
-<body class="main-content container-fluid">
-    <div class="section-full">
-        <div id="logo" alt="" class="col-xs-1"></div>
-        <h1 style="margin-bottom: 0">
+<body class="main-content">
+    <div class="section section-full">
+        <img class="logo" src="https://gastag.s3-eu-west-1.amazonaws.com/RefImages/Emails/Logo-plus-Tagline.png" />
+        <h1 class="title">
             Air Source Maintenance Sheet
         </h1>
         <p class="description">
@@ -23,330 +22,158 @@
         </p>
     </div>
 
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Customer Details</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question">
-                        <p>Name</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@Model.Answers.GetValue("E_PrintName")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Address</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@(Model.Property.Address.AddressOne + " " + Model.Property.Address.AddressTwo + ", " + Model.Property.Address.City + " " + Model.Property.Address.Postcode)</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    @{ await Html.RenderPartialAsync("DetailsSection"); }
+
+    <div class="section section-full">
+        <h2 class="section-header">Appliance Details</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question">
+                    DHW Cylinder Manufacturer
+                </td>
+                <td class="answer" colspan="3">
+                    @Model.Appliance.Payload.GetValue("E_DHWCylinderManufacturer")
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Make
+                </td>
+                <td class="answer">
+                    @Model.Appliance.Make
+                </td>
+                <td class="question">
+                    Model
+                </td>
+                <td class="answer">
+                    @Model.Appliance.Model
+                </td>
+            </tr>
+        </table>
     </div>
 
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Landlord Details</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question">
-                        <p>Name</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@Model.Landlord.Name</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Address</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@(Model.Landlord.Address.AddressOne + " " + Model.Landlord.Address.AddressTwo + ", " + Model.Landlord.Address.City + " " + Model.Landlord.Address.Postcode)</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <div class="section section-half">
+        <h2 class="section-header">Appliance Checks</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="2">
+                    Has the expansion vessel charge been checked?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_ExpansionVesselChargeCheckedResult")
+                </td>
+                <td class="question" colspan="2">
+                    Has the magnetic system filter been charged?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_MagneticFilterCleanedResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Heating system glycol concentration level
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_GlycolConcentration")<span class="units">%</span>
+                </td>
+                <td class="question" colspan="2">
+                    Does it meet manufacturers instructions & specifications?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_GlycolConcetrationMeetsSpecsResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Visual inspection of radiators & heating pipework?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_VisualInspectionOfPipeworkResult")
+                </td>
+                <td class="question" colspan="2">
+                    Compressor running current
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_CompressorRunningCurrent")<span class="units">Amp</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Check operations, thermostats and controls
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_OperationChecksResult")
+                </td>
+                <td class="question" colspan="2">
+                    Check operations of motorised valves if fitted
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_MotorisedValvesCheckedResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Inspect and clean heat exchanger
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_HeatExchangerInspectedResult")
+                </td>
+                <td class="question" colspan="2">
+                    Inspect and clean integral "Y" strainer
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_YStrainerInspectedResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    All electrical connections & mains isolator
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_ElectricalConnectionsCheckedResult")
+                </td>
+                <td class="question" colspan="2">
+                    Integrity of water pipework & lagging
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_IntegrityOfWaterPiperworkResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Unit operation voltage
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_OperationVoltageCheckedResult")
+                </td>
+                <td class="question">
+                    Check for leaks
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_InspectedForSignsOfLeaksResult")
+                </td>
+                <td class="question">
+                    Check fuse rating
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_FuseRating")<span class="units">Amp</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="5">
+                    Is the appliance safe to use?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_SafeToUseResult")
+                </td>
+            </tr>
+        </table>
     </div>
 
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Company Details</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="1">
-                        <p>Company Name</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@Model.Company?.CompanyName</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="1">
-                        <p>Company Address</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@(Model.Company?.Address?.AddressOne + " " + Model.Company?.Address?.AddressTwo + ", " + Model.Company?.Address?.City + " " + Model.Company?.Address?.Postcode)</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
+    <div class="section section-half">
+        @{ await Html.RenderPartialAsync("DefectsSection"); }
 
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Engineer Details</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question">
-                        <p>Engineer Name</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@(Model.Engineer.FirstName + " " + Model.Engineer.LastName)</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Engineer Number</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@Model.Engineer.GasSafeId</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="section-full">
-        <div class="content-block">
-            <h2>Appliance Details</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question">
-                        <p>DHW Cylinder Manufacturer</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@Model.Appliance.Payload.DHWCylinderManufacturer</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Make</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Appliance.Make</p>
-                    </td>
-                    <td class="question">
-                        <p>Model</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Appliance.Model</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Appliance Checks</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Has the expansion vessel charge been checked?</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_ExpansionVesselChargeCheckedResult")</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Has the magnetic system filter been charged?</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_MagneticFilterCleanedResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Heating system glycol concentration level</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_GlycolConcentration")<span class="units">%</span></p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Does it meet manufacturers instructions & specifications?</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_GlycolConcetrationMeetsSpecsResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Visual inspection of radiators & heating pipework?</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_VisualInspectionOfPipeworkResult")</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Compressor running current</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_CompressorRunningCurrent")<span class="units">Amp</span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Check operations, thermostats and controls</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_OperationChecksResult")</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Check operations of motorised valves if fitted</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_MotorisedValvesCheckedResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Inspect and clean heat exchanger</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_HeatExchangerInspectedResult")</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Inspect and clean integral "Y" strainer</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_YStrainerInspectedResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>All electrical connections & mains isolator</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_ElectricalConnectionsCheckedResult")</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Integrity of water pipework & lagging</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_IntegrityOfWaterPiperworkResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Unit operation voltage</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_OperationVoltageCheckedResult")</p>
-                    </td>
-                    <td class="question">
-                        <p>Check for leaks</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_InspectedForSignsOfLeaksResult")</p>
-                    </td>
-                    <td class="question">
-                        <p>Check fuse rating</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_FuseRating")<span class="units">Amp</span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="5">
-                        <p>Is the appliance safe to use?</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_SafeToUseResult")</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="section-half">
-        <div class="content-block">
-            <table cellspacing=0 class="content-inner">
-                <thead>
-                    <tr>
-                        <th style="border-radius: 10px 0 0 0; width: 6px;"></th>
-                        <th style="width: 110px;">Defects Identified</th>
-                        <th style="border-radius: 0 10px 0 0; width: 120px;">Remedial Recommendations</th>
-                    </tr>
-                </thead>
-                @foreach (var defect in Model.Defects)
-                {
-                    <tr>
-                        <td class="question-prefix repeater">
-                            <p>@defect.Order</p>
-                        </td>
-                        <td class="answer">
-                            <p>@defect.Defect</p>
-                        </td>
-                        <td class="answer">
-                            <p>@defect.Recommendation</p>
-                        </td>
-                    </tr>
-                }
-            </table>
-        </div>
-
-        <div class="content-block">
-            <h2>Servicing Record Sign Off</h2>
-            <table class=" content-inner" cellspacing=0>
-                <tr>
-                    <td class="question-prefix" colspan="5">
-                        <p>Issued by</p>
-                    </td>
-                    <td class="question" colspan="4">
-                        <p>Signed</p>
-                    </td>
-                    <td class="answer" colspan="6" height=40>
-                        <img src="data:image/png;base64, @Model.EngineerSignatureImage" alt="" height="30">
-                    </td>
-                    <td class="question" colspan="3">
-                        <p>Print Name</p>
-                    </td>
-                    <td class="answer" colspan="5">
-                        <p>@(Model.Engineer.FirstName + " " + Model.Engineer.LastName)</p>
-                    </td>
-                    <td class="question" colspan="3">
-                        <p>Date</p>
-                    </td>
-                    <td class="answer" colspan="4">
-                        <p>@(DateTime.Now.ToString("yyyy-MM-dd"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question-prefix" colspan="5">
-                        <p>Received By</p>
-                    </td>
-                    <td class="question" colspan="4">
-                        <p>Signed</p>
-                    </td>
-                    <td class="answer" colspan="6" height=40>
-                        <img src="data:image/png;base64, @Model.TenantSignatureImage" alt="" height="30">
-                    </td>
-                    <td class="question" colspan="3">
-                        <p>Print Name</p>
-                    </td>
-                    <td class="answer" colspan="5">
-                        <p>@Model.Answers.GetValue("E_PrintName")</p>
-                    </td>
-                    <td class="question" colspan="3">
-                        <p>Date</p>
-                    </td>
-                    <td class="answer" colspan="4">
-                        <p>@(Model.JobDate.ToString("yyyy-MM-dd"))</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        @{ await Html.RenderPartialAsync("SignOffSection"); }
     </div>
 
 </body>

@@ -1,28 +1,30 @@
-﻿@model DocumentDevelopment.ViewModels.DataModel
+﻿@model DocumentDevelopment.ViewModels.DocumentData
 
 <!DOCTYPE html>
-<div class="content-block">
-    <table cellspacing=0 class="content-inner">
-        <thead>
+<div>
+    <table class="repeater-question-table" cellspacing=0>
+        <thead class="section-header">
             <tr>
-                <th style="border-radius: 10px 0 0 0; width: 6px;"></th>
-                <th style="width: 110px;">Defects Identified</th>
-                <th style="border-radius: 0 10px 0 0; width: 120px;">Remedial Recommendations</th>
+                <th></th>
+                <th style="width:110px">Defects Identified</th>
+                <th>Remedial Recommendations</th>
             </tr>
         </thead>
-        @foreach (var defect in Model.Defects)
-        {
-            <tr>
-                <td class="question-prefix repeater">
-                    <p>@defect.Order</p>
-                </td>
-                <td class="answer">
-                    <p>@defect.Defect</p>
-                </td>
-                <td class="answer">
-                    <p>@defect.Recommendation</p>
-                </td>
-            </tr>
-        }
+        <tbody>
+            @foreach (var defect in Model.Defects)
+            {
+                <tr>
+                    <td class="question-prefix repeater">
+                        @defect.Order
+                    </td>
+                    <td class="answer">
+                        @defect.Defect
+                    </td>
+                    <td class="answer">
+                        @defect.Recommendation
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 </div>

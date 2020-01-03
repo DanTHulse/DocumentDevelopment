@@ -1,4 +1,4 @@
-﻿@model DocumentDevelopment.ViewModels.DataModel
+﻿@model DocumentDevelopment.ViewModels.DocumentData
 @using DocumentDevelopment.Helpers;
 
 <!DOCTYPE html>
@@ -9,10 +9,10 @@
     @{ await Html.RenderPartialAsync("DocumentStyle"); }
 
 </head>
-<body class="main-content container-fluid">
-    <div class="section-full">
-        <div id="logo" alt="" class="col-xs-1"></div>
-        <h1>
+<body class="main-content">
+    <div class="section section-full">
+        <img class="logo" src="https://gastag.s3-eu-west-1.amazonaws.com/RefImages/Emails/Logo-plus-Tagline.png" />
+        <h1 class="title">
             Servicing & Safety Record Sheet for Solid Fuel Appliances <span class="sub_heading"> (Landlord Safety Certificate)</span>
         </h1>
         <p class="description">
@@ -22,449 +22,418 @@
             only.
         </p>
     </div>
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Servicing Company</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" height=40>
-                        <p>Business Name:</p>
-                    </td>
-                    <td class="answer" height=40>
-                        <p>@Model.Company.CompanyName</p>
-                    </td>
-                    <td class="question" height=40>
-                        <p>Engineer Number</p>
-                    </td>
-                    <td class="answer" height=40>
-                        <p>@Model.Engineer.GasSafeId</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question">
-                        <p>Operative Name:</p>
-                    </td>
-                    <td class="answer">
-                        <p>@(Model.Engineer.FirstName + " " + Model.Engineer.LastName)</p>
-                    </td>
-                    <td class="question">
-                        <p>Operative Number:</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Engineer.TelephoneNum</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="content-block">
-            <h2>Installation Details</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Installation Location:</p>
-                    </td>
-                    <td class="answer" colspan="4">
-                        <p>@Model.Appliance.ApplianceLocation</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Appliance Make/Model:</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Appliance.Make + " " + Model.Appliance.Model)</p>
-                    </td>
-                    <td class="question" colspan="1">
-                        <p>Output:</p>
-                    </td>
-                    <td class="answer" style="text-align: center;" colspan="1">
-                        <p>@Model.Appliance.Payload.Output<span class="units"> kW</span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Ventilation Type:</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@Model.Appliance.Payload.VentilationType</p>
-                    </td>
-                    <td class="question" colspan="1">
-                        <p>Size:</p>
-                    </td>
-                    <td class="answer" style="text-align: center;" colspan="1">
-                        <p>@Model.Appliance.Payload.Size<span class="units"> mm2</span></>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="content-block">
-            <h2>Visual Checks</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Suitable hearth?</p>
-                    </td>
-                    <td class="answer" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_SuitableHearthResult")</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Ventilation Sufficient?</p>
-                    </td>
-                    <td class="answer" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_VentilationSufficientResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Chimney Condition Sound?</p>
-                    </td>
-                    <td class="answer" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_ChimneyConditionSoundResult")</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>CO Alarm FItted?</p>
-                    </td>
-                    <td class="answer" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_COAlarmFittedResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Termination Height?</p>
-                    </td>
-                    <td class="answer" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_TerminationHeightResult")</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Information Available?</p>
-                    </td>
-                    <td class="answer" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_InformationAvailableResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Chimney Swept?</p>
-                    </td>
-                    <td class="answer" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_ChimneySweptResult")</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Clear of Combustibles?</p>
-                    </td>
-                    <td class="answer" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_ClearOfCombustiblesResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>All Seals Airtight?</p>
-                    </td>
-                    <td class="answer" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_AllSealsAirtightResult")</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Controls Working?</p>
-                    </td>
-                    <td class="answer" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_ControlsWorkingResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="5">
-                        <p>Customer aware how to use the appliance correctly?</p>
-                    </td>
-                    <td class="answer" colspan="1" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_CustomerAwareResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="5">
-                        <p>Customer burning suitable/approved fuels for the appliance?</p>
-                    </td>
-                    <td class="answer" colspan="1" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_BurningSuitableResult")</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="content-block">
-            <table cellspacing=0 class="content-inner black">
-                <thead>
-                    <tr>
-                        <th style="border-radius: 10px 0 0 0; width: 6px;"></th>
-                        <th style="width: 110px;">Defects Identified</th>
-                        <th style="border-radius: 0 10px 0 0; width: 120px;">Remedial Recommendations</th>
-                    </tr>
-                </thead>
-                @foreach (var defect in Model.Defects)
-                {
-                    <tr>
-                        <td class="question-prefix repeater">
-                            <p>@defect.Order</p>
-                        </td>
-                        <td class="answer">
-                            <p>@defect.Defect</p>
-                        </td>
-                        <td class="answer">
-                            <p>@defect.Recommendation</p>
-                        </td>
-                    </tr>
-                }
-            </table>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="3" style="border-top-left-radius: 10px;">
-                        <p>Warning Notice/Unsafe Situation Procedure Required?</p>
-                    </td>
-                    <td class="answer">
-                        <p>@Model.Answers.GetValue("E_WarningNoticeRequiredResult")</p>
-                    </td>
-                    <td class="question" colspan="3">
-                        <p>Customer Aware of Remedial Works Required & Why?</p>
-                    </td>
-                    <td class="answer" style="border-top-right-radius: 10px;">
-                        <p>@Model.Answers.GetValue("E_CustomerAwareResult")</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="content-block section-border" style="height: 62px;">
-            <h2>Additional Notes</h2>
-            <p>@Model.Answers.GetValue("E_AdditionalNotes")</p>
+
+    <div class="section section-half">
+        <h2 class="section-header">Servicing Company</h2>
+        <table class="question-table" cellspacing=0>
+            <tr>
+                <td class="question" height=40>
+                    Business Name:
+                </td>
+                <td class="answer" height=40>
+                    @Model.Company.CompanyName
+                </td>
+                <td class="question" height=40>
+                    Engineer Number
+                </td>
+                <td class="answer" height=40>
+                    @Model.Engineer.GasSafeId
+                </td>
+            </tr>
+            <tr>
+                <td class="question">
+                    Operative Name:
+                </td>
+                <td class="answer">
+                    @(Model.Engineer.FirstName + " " + Model.Engineer.LastName)
+                </td>
+                <td class="question">
+                    Operative Number:
+                </td>
+                <td class="answer">
+                    @Model.Engineer.TelephoneNum
+                </td>
+            </tr>
+        </table>
+
+        <h2 class="section-header">Installation Details</h2>
+        <table class="question-table" cellspacing=0>
+            <tr>
+                <td class="question" colspan="2">
+                    Installation Location:
+                </td>
+                <td class="answer" colspan="4">
+                    @Model.Appliance.ApplianceLocation
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Appliance Make/Model:
+                </td>
+                <td class="answer" colspan="2">
+                    @(Model.Appliance.Make + " " + Model.Appliance.Model)
+                </td>
+                <td class="question" colspan="1">
+                    Output:
+                </td>
+                <td class="answer" style="text-align: center;" colspan="1">
+                    @Model.Appliance.Payload.GetValue("E_Output")<span class="units"> kW</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Ventilation Type:
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Appliance.Payload.GetValue("E_VentilationType")
+                </td>
+                <td class="question" colspan="1">
+                    Size:
+                </td>
+                <td class="answer" style="text-align: center;" colspan="1">
+                    @Model.Appliance.Payload.GetValue("E_Size")<span class="units"> mm2</span></>
+                </td>
+            </tr>
+        </table>
+
+        <h2 class="section-header">Visual Checks</h2>
+        <table class="question-table" cellspacing=0>
+            <tr>
+                <td class="question" colspan="2">
+                    Suitable hearth?
+                </td>
+                <td class="answer" style="text-align: center">
+                    @Model.Answers.GetValue("E_SuitableHearthResult")
+                </td>
+                <td class="question" colspan="2">
+                    Ventilation Sufficient?
+                </td>
+                <td class="answer" style="text-align: center">
+                    @Model.Answers.GetValue("E_VentilationSufficientResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Chimney Condition Sound?
+                </td>
+                <td class="answer" style="text-align: center">
+                    @Model.Answers.GetValue("E_ChimneyConditionSoundResult")
+                </td>
+                <td class="question" colspan="2">
+                    CO Alarm FItted?
+                </td>
+                <td class="answer" style="text-align: center">
+                    @Model.Answers.GetValue("E_COAlarmFittedResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Termination Height?
+                </td>
+                <td class="answer" style="text-align: center">
+                    @Model.Answers.GetValue("E_TerminationHeightResult")
+                </td>
+                <td class="question" colspan="2">
+                    Information Available?
+                </td>
+                <td class="answer" style="text-align: center">
+                    @Model.Answers.GetValue("E_InformationAvailableResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Chimney Swept?
+                </td>
+                <td class="answer" style="text-align: center">
+                    @Model.Answers.GetValue("E_ChimneySweptResult")
+                </td>
+                <td class="question" colspan="2">
+                    Clear of Combustibles?
+                </td>
+                <td class="answer" style="text-align: center">
+                    @Model.Answers.GetValue("E_ClearOfCombustiblesResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    All Seals Airtight?
+                </td>
+                <td class="answer" style="text-align: center">
+                    @Model.Answers.GetValue("E_AllSealsAirtightResult")
+                </td>
+                <td class="question" colspan="2">
+                    Controls Working?
+                </td>
+                <td class="answer" style="text-align: center">
+                    @Model.Answers.GetValue("E_ControlsWorkingResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="5">
+                    Customer aware how to use the appliance correctly?
+                </td>
+                <td class="answer" colspan="1" style="text-align: center">
+                    @Model.Answers.GetValue("E_CustomerAwareResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="5">
+                    Customer burning suitable/approved fuels for the appliance?
+                </td>
+                <td class="answer" colspan="1" style="text-align: center">
+                    @Model.Answers.GetValue("E_BurningSuitableResult")
+                </td>
+            </tr>
+        </table>
+
+        @{ await Html.RenderPartialAsync("DefectsSection"); }
+
+        <table class="question-table" cellspacing=0>
+            <tr>
+                <td class="question" colspan="3" style="border-top-left-radius: 10px;">
+                    Warning Notice/Unsafe Situation Procedure Required?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_WarningNoticeRequiredResult")
+                </td>
+                <td class="question" colspan="3">
+                    Customer Aware of Remedial Works Required & Why?
+                </td>
+                <td class="answer" style="border-top-right-radius: 10px;">
+                    @Model.Answers.GetValue("E_CustomerAwareResult")
+                </td>
+            </tr>
+        </table>
+
+        <div class="section-border" style="height: 62px;">
+            <h2 class="section-header no-margin">Additional Notes</h2>
+            @Model.Answers.GetValue("E_AdditionalNotes")
         </div>
     </div>
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Property Details</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="2" height=40>
-                        <p>Customer Name: </p>
-                    </td>
-                    <td class="answer" colspan="3" height=40>
-                        <p>@Model.Landlord.Name</p>
-                    </td>
-                    <td class="answer" colspan="3" height=40>
-                        <p></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2" height=40>
-                        <p>Address: </p>
-                    </td>
-                    <td class="answer" colspan="6" height=40>
-                        <p>
-                            @Model.Property.Address.AddressOne<br />
-                            @Model.Property.Address.AddressTwo<br />
-                            @Model.Property.Address.City<br />
-                            @Model.Property.Address.County
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Postcode: </p>
-                    </td>
-                    <td class="answer" colspan="6">
-                        <p>@Model.Property.Address.Postcode</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Email</p>
-                    </td>
-                    <td class="answer" colspan="6">
-                        <p>@Model.Property.TenantEmail</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="content-block">
-            <h2>Re-Commissioning Checks</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td colspan="5"></td>
-                    <td colspan="2" class="answer" style="text-align: center">
-                        <p><b>RESULT</b></p>
-                    </td>
-                    <td colspan="6" class="answer" style="text-align: center;">
-                        <p><b>NOTES</b></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5" class="question">
-                        <p>Smoke Draw Test:</p>
-                    </td>
-                    <td colspan="2" style="text-align: center" class="answer">
-                        <p>@Model.Answers.GetValue("E_SmokeDrawTestResult")</p>
-                    </td>
-                    <td colspan="6">
-                        <p>@Model.Answers.GetValue("E_SmokeDrawTestNotes")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5" class="question">
-                        <p>Flue Draught Extraction Test: </p>
-                    </td>
-                    <td colspan="2" style="text-align: center" class="answer">
-                        <p>@Model.Answers.GetValue("E_FlueDraughtExtractionTestResult")</p>
-                    </td>
-                    <td colspan="6">
-                        <p>@Model.Answers.GetValue("E_FlueDraughtExtractionTestNotes")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5" class="question">
-                        <p>Spillage Test: </p>
-                    </td>
-                    <td colspan="2" style="text-align: center" class="answer">
-                        <p>@Model.Answers.GetValue("E_SpillageTestResult")</p>
-                    </td>
-                    <td colspan="6">
-                        <p>@Model.Answers.GetValue("E_SpillageTestNotes")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="10" class="question">
-                        <p>General manufacturer checks undertaken? </p>
-                    </td>
-                    <td colspan="3" style="text-align: center" class="answer">
-                        <p>@Model.Answers.GetValue("E_GeneralChecksUndertakenResult")</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="content-block">
-            <h2 style="background-color: #606060">Wet System Checks</h2>
-            <table class="content-inner black" cellspacing=0>
-                <tr>
-                    <td colspan="6" class="question black">
-                        <p>Boiler Connections & Suitability?</p>
-                    </td>
-                    <td colspan="2" class="answer black" style="text-align: center;">
-                        <p>@Model.Answers.GetValue("E_BoilerConnectionsResult")</p>
-                    </td>
-                    <td colspan="6" class="question black">
-                        <p>Storage Type, Size & Suitability?</p>
-                    </td>
-                    <td colspan="2" class="answer black" style="text-align: center;">
-                        <p>@Model.Answers.GetValue("E_StorageTypeResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="6" class="question black">
-                        <p>Storage Location?</p>
-                    </td>
-                    <td colspan="2" class="answer black" style="text-align: center;">
-                        <p>@Model.Answers.GetValue("E_StorageLocationResult")</p>
-                    </td>
-                    <td colspan="6" class="question black">
-                        <p>F&E Tank Type, Location & Size?</p>
-                    </td>
-                    <td colspan="2" class="answer black" style="text-align: center;">
-                        <p>@Model.Answers.GetValue("E_FETankTypeResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="6" class="question black">
-                        <p>System Controls & Immersion?</p>
-                    </td>
-                    <td colspan="2" class="answer black" style="text-align: center;">
-                        <p>@Model.Answers.GetValue("E_SystemControlsResult")</p>
-                    </td>
-                    <td colspan="6" class="question black">
-                        <p>System Checked under Operation?</p>
-                    </td>
-                    <td colspan="2" class="answer black" style="text-align: center;">
-                        <p>@Model.Answers.GetValue("E_SystemCheckedResult")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="6" class="question black">
-                        <p>Service Passed?</p>
-                    </td>
-                    <td colspan="2" class="answer black" style="text-align: center">
-                        <p>@Model.Answers.GetValue("E_ServicePassedResult")</p>
-                    </td>
-                    <td colspan="6" class="question black">
-                        <p>Wet System Service Passed</p>
-                    </td>
-                    <td colspan="2" class="answer black" style="text-align: center;">
-                        <p>@Model.Answers.GetValue("E_WetSystemChecksResult")</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="content-block">
-            <h2>Servicing Record Sign Off</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question-prefix" rowspan="2" colspan="2">
-                        <p>Issued by:</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Signed:</p>
-                    </td>
-                    <td class="answer" colspan="5" height=40>
-                        <img src="data:image/png;base64, @Model.EngineerSignatureImage" alt="" height="30">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Print Name:</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Engineer.FirstName + " " + Model.Engineer.LastName)</p>
-                    </td>
-                    <td class="question" colspan="1">
-                        <p>Date:</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(DateTime.Now.ToString("yyyy-MM-dd"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question-prefix" rowspan="2" colspan="2">
-                        <p>Customer Confirmation:</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Signed:</p>
-                    </td>
-                    <td class="answer" colspan="5" height=40>
-                        <img src="data:image/png;base64, @Model.TenantSignatureImage" alt="" height="30">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Print Name:</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@Model.Answers.GetValue("E_PrintName")</p>
-                    </td>
-                    <td class="question" colspan="1">
-                        <p>Date:</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.JobDate.ToString("yyyy-MM-dd"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Next Service Date:</p>
-                    </td>
-                    <td class="answer" colspan="3">
-                        <p>@(Model.Appliance.NextServiceDate.ToString("yyyy-MM-dd"))</p>
-                    </td>
-                    <td class="question" colspan="2">
-                        <p>Serviced Passed?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@Model.Answers.GetValue("E_ServicePassedResult")</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+
+    <div class="section section-half">
+        <h2 class="section section-header">Property Details</h2>
+        <table class="question-table" cellspacing=0>
+            <tr>
+                <td class="question" colspan="2" height=40>
+                    Customer Name:
+                </td>
+                <td class="answer" colspan="3" height=40>
+                    @Model.Landlord.Name
+                </td>
+                <td class="answer" colspan="3" height=40>
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2" height=40>
+                    Address:
+                </td>
+                <td class="answer" colspan="6" height=40>
+                    @Model.Property.Address.AddressOne<br />
+                    @Model.Property.Address.AddressTwo<br />
+                    @Model.Property.Address.City<br />
+                    @Model.Property.Address.County
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Postcode:
+                </td>
+                <td class="answer" colspan="6">
+                    @Model.Property.Address.Postcode
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Email
+                </td>
+                <td class="answer" colspan="6">
+                    @Model.Property.TenantEmail
+                </td>
+            </tr>
+        </table>
+
+        <h2 class="section-header">Re-Commissioning Checks</h2>
+        <table class="question-table" cellspacing=0>
+            <tr>
+                <td colspan="5"></td>
+                <td colspan="2" class="answer" style="text-align: center">
+                    <b>RESULT</b>
+                </td>
+                <td colspan="6" class="answer" style="text-align: center;">
+                    <b>NOTES</b>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="question">
+                    Smoke Draw Test:
+                </td>
+                <td colspan="2" style="text-align: center" class="answer">
+                    @Model.Answers.GetValue("E_SmokeDrawTestResult")
+                </td>
+                <td colspan="6">
+                    @Model.Answers.GetValue("E_SmokeDrawTestNotes")
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="question">
+                    Flue Draught Extraction Test:
+                </td>
+                <td colspan="2" style="text-align: center" class="answer">
+                    @Model.Answers.GetValue("E_FlueDraughtExtractionTestResult")
+                </td>
+                <td colspan="6">
+                    @Model.Answers.GetValue("E_FlueDraughtExtractionTestNotes")
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="question">
+                    Spillage Test:
+                </td>
+                <td colspan="2" style="text-align: center" class="answer">
+                    @Model.Answers.GetValue("E_SpillageTestResult")
+                </td>
+                <td colspan="6">
+                    @Model.Answers.GetValue("E_SpillageTestNotes")
+                </td>
+            </tr>
+            <tr>
+                <td colspan="10" class="question">
+                    General manufacturer checks undertaken?
+                </td>
+                <td colspan="3" style="text-align: center" class="answer">
+                    @Model.Answers.GetValue("E_GeneralChecksUndertakenResult")
+                </td>
+            </tr>
+        </table>
+
+        <h2 class="section-header section-header-alt">Wet System Checks</h2>
+        <table class="question-table black" cellspacing=0>
+            <tr>
+                <td colspan="6" class="question black">
+                    Boiler Connections & Suitability?
+                </td>
+                <td colspan="2" class="answer black" style="text-align: center;">
+                    @Model.Answers.GetValue("E_BoilerConnectionsResult")
+                </td>
+                <td colspan="6" class="question black">
+                    Storage Type, Size & Suitability?
+                </td>
+                <td colspan="2" class="answer black" style="text-align: center;">
+                    @Model.Answers.GetValue("E_StorageTypeResult")
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="question black">
+                    Storage Location?
+                </td>
+                <td colspan="2" class="answer black" style="text-align: center;">
+                    @Model.Answers.GetValue("E_StorageLocationResult")
+                </td>
+                <td colspan="6" class="question black">
+                    F&E Tank Type, Location & Size?
+                </td>
+                <td colspan="2" class="answer black" style="text-align: center;">
+                    @Model.Answers.GetValue("E_FETankTypeResult")
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="question black">
+                    System Controls & Immersion?
+                </td>
+                <td colspan="2" class="answer black" style="text-align: center;">
+                    @Model.Answers.GetValue("E_SystemControlsResult")
+                </td>
+                <td colspan="6" class="question black">
+                    System Checked under Operation?
+                </td>
+                <td colspan="2" class="answer black" style="text-align: center;">
+                    @Model.Answers.GetValue("E_SystemCheckedResult")
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="question black">
+                    Service Passed?
+                </td>
+                <td colspan="2" class="answer black" style="text-align: center">
+                    @Model.Answers.GetValue("E_ServicePassedResult")
+                </td>
+                <td colspan="6" class="question black">
+                    Wet System Service Passed
+                </td>
+                <td colspan="2" class="answer black" style="text-align: center;">
+                    @Model.Answers.GetValue("E_WetSystemChecksResult")
+                </td>
+            </tr>
+        </table>
+
+        <h2 class="section-header">Servicing Record Sign Off</h2>
+        <table class="question-table" cellspacing=0>
+            <tr>
+                <td class="question-prefix" rowspan="2" colspan="2">
+                    Issued by:
+                </td>
+                <td class="question" colspan="2">
+                    Signed:
+                </td>
+                <td class="answer" colspan="5" height=40>
+                    <img src="data:image/png;base64, @Model.EngineerSignatureImage" alt="" height="30">
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Print Name:
+                </td>
+                <td class="answer" colspan="2">
+                    @(Model.Engineer.FirstName + " " + Model.Engineer.LastName)
+                </td>
+                <td class="question" colspan="1">
+                    Date:
+                </td>
+                <td class="answer" colspan="2">
+                    @DateTime.Now.ToString("yyyy-MM-dd")
+                </td>
+            </tr>
+            <tr>
+                <td class="question-prefix" rowspan="2" colspan="2">
+                    Customer Confirmation:
+                </td>
+                <td class="question" colspan="2">
+                    Signed:
+                </td>
+                <td class="answer" colspan="5" height=40>
+                    <img src="data:image/png;base64, @Model.TenantSignatureImage" alt="" height="30">
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Print Name:
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_PrintName")
+                </td>
+                <td class="question" colspan="1">
+                    Date:
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.JobDate.ToString("yyyy-MM-dd")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Next Service Date:
+                </td>
+                <td class="answer" colspan="3">
+                    @Model.Appliance.NextServiceDate.ToString("yyyy-MM-dd")
+                </td>
+                <td class="question" colspan="2">
+                    Serviced Passed?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_ServicePassedResult")
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 

@@ -21,7 +21,7 @@ namespace DocumentDevelopment.Services
             _pdfGenerator = pdfGenerator;
         }
 
-        public async Task<string> CreateDocument(DataModel data, PaperworkType paperworkType, bool generateHtml)
+        public async Task<string> CreateDocument(DocumentData data, PaperworkType paperworkType, bool generateHtml)
         {
             var htmlModel = await _templateRenderer.Render(paperworkType.ToString(), data);
 

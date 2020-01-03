@@ -7,11 +7,11 @@ namespace DocumentDevelopment.Data
 {
     public class MockDataModel
     {
-        public static DataModel Build
+        public static DocumentData Build
         {
             get
             {
-                return new DataModel
+                return new DocumentData
                 {
                     JobDate = DateTime.Now,
                     Contractor = new Contractors
@@ -58,7 +58,7 @@ namespace DocumentDevelopment.Data
                         FlueType = "CF - Conventional Flue",
                         FireAssessmentCarriedOut = true,
                         ApplianceLocation = "Kitchen",
-                        Payload = BuildAppliancePayload,
+                        Payload = BuildPayload,
                     },
                     Answers = BuildAnswers,
                     Chimneys = new List<ApplianceModel>
@@ -68,16 +68,16 @@ namespace DocumentDevelopment.Data
                         BuildEmptyChimney,
                         BuildEmptyChimney
                     },
-                    TenantSignatureImage = _sigImage1,
-                    EngineerSignatureImage = _sigImage2,
                     Defects = new List<(int Order, string Defect, string Recommendation)>
                     {
-                        (1, "Appliance Defect 1", "this is the recommendation for Appliance Defect 1"),
-                        (2, "Appliance Defect 2", "this is the recommendation for Appliance Defect 2"),
-                        (3, "Appliance Defect 3", "this is the recommendation for Appliance Defect 3"),
-                        (4, "Appliance Defect 4", "this is the recommendation for Appliance Defect 4"),
-                        (5, "Appliance Defect 5", "this is the recommendation for Appliance Defect 5")
-                    }
+                        (1, "defect 1", "this is the recommendation for defect 1"),
+                        (2, "defect 2", "this is the recommendation for defect 2"),
+                        (3, "defect 3", "this is the recommendation for defect 3"),
+                        (4, "defect 4", "this is the recommendation for defect 4"),
+                        (5, "defect 5", "this is the recommendation for defect 5")
+                    },
+                    TenantSignatureImage = _sigImage1,
+                    EngineerSignatureImage = _sigImage2,
                 };
             }
         }
@@ -97,58 +97,13 @@ namespace DocumentDevelopment.Data
             }
         }
 
-        private static AppliancePayload BuildAppliancePayload
-        {
-            get
-            {
-                return new AppliancePayload
-                {
-                    Size = "234",
-                    Output = "234",
-                    VentilationType = "Type 1",
-                    FuelType = "Oil",
-                    SystemType = "TS-T",
-                    ApplianceCondition = "Very Good",
-                    LandlordsAppliance = true,
-                    Capacity = 1000,
-                    ControlSystemType = "Test",
-                    HeatSourceType = "Oil",
-                    CollectorMake = "Test Collector",
-                    CollectorModel = "Collector Model",
-                    CollectorSerialNumber = "CS-123432",
-                    CollectorType = "Internal",
-                    NumberOfCollectors = "2",
-                    CylinderMake = "Test Cylinder",
-                    CylinderModel = "Cylinder Model",
-                    CylinderSerialNumber = "Cy-12ds",
-                    CylinderType = "Fluted",
-                    CylinderSize = "200l",
-                    DHWCylinderManufacturer = "Clyde",
-                    OilBurnerMake = "Test Oil Burner",
-                    OilBurnerModel = "Oil Burner Model",
-                    OilBurnerType = "Open",
-                    PumpStationMake = "Test Pump Station",
-                    PumpStationModel = "Pump Station Model",
-                    PumpStationSerialNumber = "PS-2RT2",
-                    NumberOfPumps = "4",
-                    TankMake = "Test Tank",
-                    TankType = "Open",
-                    DrainBackTankMake = "Test Drain Back",
-                    DrainBackTankModel = "Drain Back Model",
-                    DrainBackTankSerialNumber = "DBT-3f",
-                    ExpansionVesselSize = "2000l",
-                    ExVesselPreChargeSetting = "243",
-                };
-            }
-        }
-
         private static ApplianceModel BuildEmptyChimney
         {
             get
             {
                 return new ApplianceModel
                 {
-                    Payload = new AppliancePayload()
+                    Payload = new Dictionary<string, string>()
                 };
             }
         }
@@ -161,13 +116,13 @@ namespace DocumentDevelopment.Data
                 {
                     Make = "Test Make",
                     Model = "Test Model",
-                    Payload = new AppliancePayload
+                    Payload = new Dictionary<string, string>
                     {
-                        FuelType = "Oil"
+                        { "E_FuelType", "Oil" }
                     },
                     ApplianceLocation = "Living Room",
                     NextSweepDate = DateTime.Now.AddYears(1),
-                    Answers = new Dictionary<string, object>
+                    Answers = new Dictionary<string, string>
                     {
                         // ChimneySweeping
                         { "E_FlueResult", "Pass" },
@@ -189,11 +144,55 @@ namespace DocumentDevelopment.Data
             }
         }
 
-        private static Dictionary<string, object> BuildAnswers
+        private static Dictionary<string, string> BuildPayload
         {
             get
             {
-                return new Dictionary<string, object>
+                return new Dictionary<string, string>
+                {
+                    { "E_DHWCylinderManufacturer", "DHWManufacturer" },
+                    { "E_TankType", "Sealed" },
+                    { "E_OilBurnerMake", "OBMake" },
+                    { "E_OilBurnerModel", "OBModel" },
+                    { "E_OilBurnerType", "Back Burner" },
+                    { "E_FuelType", "Gas" },
+                    { "E_SystemType", "Vented" },
+                    { "E_CylinderMake", "CyMake" },
+                    { "E_CylinderModel", "CyModel" },
+                    { "E_CylinderSerialNumber", "Cy-Sl2ww" },
+                    { "E_CylinderType", "Vented" },
+                    { "E_CylinderSize", "120" },
+                    { "E_CollectorMake", "CMake" },
+                    { "E_CollectorModel", "CModel" },
+                    { "E_CollectorSerialNumber", "C-s3412" },
+                    { "E_CollectorType", "Open" },
+                    { "E_NumberOfCollectors", "2" },
+                    { "E_PumpStationMake", "PSMake" },
+                    { "E_PumpStationModel", "PSModel" },
+                    { "E_PumpStationSerialNumber", "P-S2dks" },
+                    { "E_NumberOfPumps", "1" },
+                    { "E_DrainBackTankMake", "DBMake" },
+                    { "E_DrainBackTankModel", "DBModel" },
+                    { "E_DrainBackTankSerialNumber", "D-St32s" },
+                    { "E_ExpansionVesselSize", "1200" },
+                    { "E_ExVesselPreChargeSetting", "123" },
+                    { "E_ApplianceCondition", "Very Good" },
+                    { "E_LandlordsAppliance", "Yes" },
+                    { "E_Output", "1230" },
+                    { "E_VentilationType", "Open" },
+                    { "E_Size", "100" },
+                    { "E_ControlSystemType", "Direct" },
+                    { "E_Capacity", "1000" },
+                    { "E_HeatsourceType", "Oil" },
+                };
+            }
+        }
+
+        private static Dictionary<string, string> BuildAnswers
+        {
+            get
+            {
+                return new Dictionary<string, string>
                 {
                     #region ASHP
                     { "E_ExpansionVesselChargeCheckedResult", "Yes" },
@@ -359,7 +358,7 @@ namespace DocumentDevelopment.Data
 
                     #region Unvented
                     { "E_SolarRenewablesCompatibleResult", "Yes" },
-                    { "E_PrimaryHeatsource", "Sealed" },
+                    { "E_Heatsource", "Oil" },
                     { "E_HeatsourceTypeResult", "Direct" },
                     { "E_GasBoilerResult", "Yes" },
                     { "E_OilBoilerResult", "Yes" },
@@ -378,12 +377,12 @@ namespace DocumentDevelopment.Data
                     { "E_ReliefValveServiceabilityResult", "Yes" },
                     { "E_TemperatureReliefValvePressentResult", "Yes" },
                     { "E_TemperatureReliefValveOperationResult", "Yes" },
+                    { "E_ReliefValveTypeResult", "Other" },
                     { "E_DischargePipesResult", "Yes" },
                     { "E_WaterInletFilterCleanedResult", "Yes" },
                     { "E_OverheatInterlockResult", "Yes" },
                     { "E_FittedWithCutOutDeviceResult", "Yes" },
-                    { "E_DirectlyFiredThermostatResult", "Yes" },
-                    { "E_IndirectlyFiredThermostatResult", "Yes" },
+                    { "E_ThermostatCutOutResult", "Yes" },
                     { "E_ColdWaterTeeFittedResult", "Yes" },
                     { "E_D1D2MaterialSuitableResult", "Yes" },
                     { "E_D1FittedToStandardsResult", "Yes" },

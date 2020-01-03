@@ -1,4 +1,4 @@
-﻿@model DocumentDevelopment.ViewModels.DataModel
+﻿@model DocumentDevelopment.ViewModels.DocumentData
 @using DocumentDevelopment.Helpers;
 
 <!DOCTYPE html>
@@ -11,10 +11,10 @@
 
 </head>
 
-<body class="main-content container-fluid">
-    <div class="section-full">
-        <div id="logo" alt="" class="col-xs-1"></div>
-        <h1 style="margin-bottom: 0">
+<body class="main-content">
+    <div class="section section-full">
+        <img class="logo" src="https://gastag.s3-eu-west-1.amazonaws.com/RefImages/Emails/Logo-plus-Tagline.png" />
+        <h1 class="title">
             TI/133D Domestic Oil Storage Tank Spillage and Fire Risk Assessment
         </h1>
         <p class="description">
@@ -25,192 +25,176 @@
 
     @{ await Html.RenderPartialAsync("DetailsSection"); }
 
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Environment Hazard - Part 1</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Tank is in Jersey, Gurnsey or Isle of Man?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankLocatedInJerseyGuernseyResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Tank is in Wales and the installation is after 15<sup>th</sup> March 2016?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankLocationInWalesResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Tank capacity is in excess of 2500 litres?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankCapacityOver2500Result"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Tank is within 10 meters of controlled water?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankCloseToControlledWaterResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Tank located where spillage could run into an open drain or to a loose manhole cover?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankLocatedNearDrainResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Tank is within 50 meters of a borehole or spring?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankCloseToBoreholeResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>
-                            Tank is over hard ground / surface that could enable spillage to run-off to reach controlled
-                            water?
-                        </p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankOverHardGroundResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>
-                            Tank is located in a position where the vent pipe outlet is not visable from the fill point?
-                        </p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_VentPipeNotVisibleFromFillPointResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Tank is supplying heating oil to a building other than a single family dwelling?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankSupplyNonSingleFamilyDwellingResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Any other potential hazard individual to the site?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_OtherPotentialFireHazardResult"))</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <div class="section section-half">
+        <h2 class="section-header">Environment Hazard - Part 1</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="8">
+                    Tank is in Jersey, Gurnsey or Isle of Man?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankLocatedInJerseyGuernseyResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Tank is in Wales and the installation is after 15<sup>th</sup> March 2016?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankLocationInWalesResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Tank capacity is in excess of 2500 litres?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankCapacityOver2500Result")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Tank is within 10 meters of controlled water?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankCloseToControlledWaterResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Tank located where spillage could run into an open drain or to a loose manhole cover?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankLocatedNearDrainResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Tank is within 50 meters of a borehole or spring?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankCloseToBoreholeResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Tank is over hard ground / surface that could enable spillage to run-off to reach controlled
+                    water?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankOverHardGroundResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Tank is located in a position where the vent pipe outlet is not visable from the fill point?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_VentPipeNotVisibleFromFillPointResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Tank is supplying heating oil to a building other than a single family dwelling?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankSupplyNonSingleFamilyDwellingResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Any other potential hazard individual to the site?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_OtherPotentialFireHazardResult")
+                </td>
+            </tr>
+        </table>
 
-        <div class="content-block">
-            <h2>Environment Hazard - Part 2</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Tank is located in a flood risk area or is exposed to high wind?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankLocatedInFloodHighWindRiskResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Is a Tank restraint provided as recommended by the Tank manufacturer?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankRestraintProvdedResult"))</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <h2 class="section-header">Environment Hazard - Part 2</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="8">
+                    Tank is located in a flood risk area or is exposed to high wind?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankLocatedInFloodHighWindRiskResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Is a Tank restraint provided as recommended by the Tank manufacturer?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankRestraintProvdedResult")
+                </td>
+            </tr>
+        </table>
 
         @{ await Html.RenderPartialAsync("SignOffSection"); }
-
     </div>
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Fire Hazard</h2>
-            <table class=" content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>
-                            Oil tank is located within 1.8 meters of a non-fire rated building or structure (less than 30
-                            minutes)?
-                        </p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankCloseToNonFireWallResult"))</p>
-                    </td>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Oil tank is located within 760mm of a non-fire rated boundary?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankCloseToNonFireBoundaryResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Oil tank is located within 1.8 meters of a non-fire rated eaves (less than 30 minutes)?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankCloseToNonFireEavesResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>
-                            Oil tank is located within 1.8 meters of a construction opening in the building (window/door)?
-                        </p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankCloseToConstructionOpeningResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Oil tank is located within 1.8 meters of a flue termination?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_TankCloseToFlueTerminationResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>
-                            Oil tank is located on a base which does not extend a minimum of 300mm around all sides of the
-                            tank?
-                        </p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_HasBase300mmAroundTankResult"))</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="8">
-                        <p>Is fire protection provided?</p>
-                    </td>
-                    <td class="answer" colspan="2">
-                        <p>@(Model.Answers.GetValue("E_FireProtectionProvidedResult"))</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+
+    <div class="section section-half">
+        <h2 class="section-header">Fire Hazard</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="8">
+                    Oil tank is located within 1.8 meters of a non-fire rated building or structure (less than 30
+                    minutes)?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankCloseToNonFireWallResult")
+                </td>
+            <tr>
+                <td class="question" colspan="8">
+                    Oil tank is located within 760mm of a non-fire rated boundary?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankCloseToNonFireBoundaryResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Oil tank is located within 1.8 meters of a non-fire rated eaves (less than 30 minutes)?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankCloseToNonFireEavesResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Oil tank is located within 1.8 meters of a construction opening in the building (window/door)?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankCloseToConstructionOpeningResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Oil tank is located within 1.8 meters of a flue termination?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_TankCloseToFlueTerminationResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Oil tank is located on a base which does not extend a minimum of 300mm around all sides of the
+                    tank?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_HasBase300mmAroundTankResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="8">
+                    Is fire protection provided?
+                </td>
+                <td class="answer" colspan="2">
+                    @Model.Answers.GetValue("E_FireProtectionProvidedResult")
+                </td>
+            </tr>
+        </table>
 
         @{ await Html.RenderPartialAsync("DefectsSection"); }
 

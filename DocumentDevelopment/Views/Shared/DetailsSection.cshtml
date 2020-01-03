@@ -1,107 +1,96 @@
-﻿@model DocumentDevelopment.ViewModels.DataModel
+﻿@model DocumentDevelopment.ViewModels.DocumentData
 @using DocumentDevelopment.Helpers;
 
 <!DOCTYPE html>
 <div>
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Customer Details Test</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Name</p>
-                    </td>
-                    <td class="answer" colspan="6">
-                        <p>@Model.Answers.GetValue("E_PrintName")</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Address</p>
-                    </td>
-                    <td class="answer" colspan="6" style="        height: 35px;">
-                        <p>
-                            @(Model.Property.Address.AddressOne + ", " + Model.Property.Address.AddressTwo)<br />
-                            @(Model.Property.Address.City + ", " + Model.Property.Address.Postcode)
-                        </p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <div class="section section-half">
+        <h2 class="section-header">Customer Details</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="2">
+                    Name
+                </td>
+                <td class="answer" colspan="6">
+                    @Model.Answers.GetValue("E_PrintName")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Address
+                </td>
+                <td class="answer" colspan="6" style="height: 35px;">
+                    @(Model.Property.Address.AddressOne + ", " + Model.Property.Address.AddressTwo)<br />
+                    @(Model.Property.Address.City + ", " + Model.Property.Address.Postcode)
+                </td>
+            </tr>
+        </table>
     </div>
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Landlord Details</h2>
-            <table class=" content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Landlord Name</p>
-                    </td>
-                    <td class="answer" colspan="6">
-                        <p>@Model.Landlord.Name</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Address</p>
-                    </td>
-                    <td class="answer" colspan="6" style="        height: 35px;">
-                        <p>
-                            @(Model.Landlord.Address.AddressOne + ", " + Model.Landlord.Address.AddressTwo)<br />
-                            @(Model.Landlord.Address.City + ", " + Model.Landlord.Address.Postcode)
-                        </p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+
+    <div class="section section-half">
+        <h2 class="section-header">Landlord Details</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="2">
+                    Landlord Name
+                </td>
+                <td class="answer" colspan="6">
+                    @Model.Landlord.Name
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Address
+                </td>
+                <td class="answer" colspan="6" style="height: 35px;">
+                    @(Model.Landlord.Address.AddressOne + ", " + Model.Landlord.Address.AddressTwo)<br />
+                    @(Model.Landlord.Address.City + ", " + Model.Landlord.Address.Postcode)
+                </td>
+            </tr>
+        </table>
     </div>
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Company Details</h2>
-            <table class="content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Compnay Name</p>
-                    </td>
-                    <td class="answer" colspan="6">
-                        <p>@Model.Company.CompanyName</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Company Address</p>
-                    </td>
-                    <td class="answer" colspan="6" style="        height: 35px;">
-                        <p>
-                            @(Model.Company?.Address?.AddressOne + ", " + Model.Company?.Address?.AddressTwo)<br />
-                            @(Model.Company?.Address?.City + ", " + Model.Company?.Address?.Postcode)
-                        </p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+
+    <div class="section section-half">
+        <h2 class="section-header">Company Details</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="2">
+                    Compnay Name
+                </td>
+                <td class="answer" colspan="6">
+                    @Model.Company.CompanyName
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Company Address
+                </td>
+                <td class="answer" colspan="6" style="height: 35px;">
+                    @(Model.Company.Address.AddressOne + ", " + Model.Company.Address.AddressTwo)<br />
+                    @(Model.Company.Address.City + ", " + Model.Company.Address.Postcode)
+                </td>
+            </tr>
+        </table>
     </div>
-    <div class="section-half">
-        <div class="content-block">
-            <h2>Engineer Details</h2>
-            <table class=" content-inner" cellspacing=0>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Engineer Name</p>
-                    </td>
-                    <td class="answer" colspan="6">
-                        <p>@(Model.Engineer.FirstName + " " + Model.Engineer.LastName)</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question" colspan="2">
-                        <p>Engineer OFTEC Number</p>
-                    </td>
-                    <td class="answer" colspan="6" style="        height: 35px;">
-                        <p>@Model.Engineer.GasSafeId</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+
+    <div class="section section-half">
+        <h2 class="section-header">Engineer Details</h2>
+        <table class="question-table" cellspacing="0">
+            <tr>
+                <td class="question" colspan="2">
+                    Engineer Name
+                </td>
+                <td class="answer" colspan="6">
+                    @(Model.Engineer.FirstName + " " + Model.Engineer.LastName)
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Engineer OFTEC Number
+                </td>
+                <td class="answer" colspan="6" style="height: 35px;">
+                    @Model.Engineer.GasSafeId
+                </td>
+            </tr>
+        </table>
     </div>
 </div>

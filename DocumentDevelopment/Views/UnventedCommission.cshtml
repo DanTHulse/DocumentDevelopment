@@ -15,11 +15,11 @@
     <div class="section section-full">
         <img class="logo" src="https://gastag.s3-eu-west-1.amazonaws.com/RefImages/Emails/Logo-plus-Tagline.png" />
         <h1 class="title">
-            Unvented Servicing Record
+            Unvented Commissioning Record
         </h1>
         <p class="description">
             The following is to be completed on any visit where an unvented water storage cylinder is
-            serviced. Ask tenant if they are aware of any operational fault or problems.
+            installed. Ask tenant if they are aware of any operational fault or problems.
         </p>
     </div>
 
@@ -106,10 +106,10 @@
                     @Model.Appliance.Payload.GetValue("E_Capacity") <span class="units">Ltrs</span>
                 </td>
                 <td class="question" colspan="7">
-                    Renewables Compatible
+                    Heat Source Type
                 </td>
                 <td class="answer" colspan="10">
-                    @Model.Answers.GetValue("E_SolarRenewablesCompatibleResult")
+                    @Model.Appliance.Payload.GetValue("E_HeatsourceType")
                 </td>
             </tr>
             <tr>
@@ -128,15 +128,94 @@
             </tr>
             <tr>
                 <td class="question" colspan="7">
-                    Primary Heat Source
+                    Heat Source
                 </td>
                 <td class="answer" colspan="27">
-                    @Model.Answers.GetValue("E_PrimaryHeatsource")
+                    @Model.Answers.GetValue("E_Heatsource")
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section section-third">
+        <h2 class="section-header">Company & Engineer Details</h2>
+        <table class="question-table" cellspacing=0>
+            <tr>
+                <td class="question" colspan="3">
+                    Company Name
+                </td>
+                <td class="answer" colspan="6">
+                    @Model.Company.CompanyName
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="3">
+                    Company Address
+                </td>
+                <td class="answer" colspan="6">
+                    @(Model.Company.Address.AddressOne + " " + Model.Company.Address.AddressTwo + ", " + Model.Company.Address.City + " " + Model.Company.Address.Postcode)
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="3">
+                    Engineer Name
+                </td>
+                <td class="answer" colspan="6">
+                    @(Model.Engineer.FirstName + " " + Model.Engineer.LastName)
                 </td>
             </tr>
         </table>
 
-        <h2 class="section section-header">Expansion Vessel Details</h2>
+        <h2 class="section-header">Discharge Pipework</h2>
+        <table class="question-table" cellspacing=0>
+            <tr>
+                <td class="question" colspan="2">
+                    Material Suitable?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_D1D2MaterialSuitableResult")
+                </td>
+                <td class="question" colspan="2">
+                    D1 Suitable?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_D1FittedToStandardsResult")
+                </td>
+
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    D2 Suitable?
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_D2FittedToStandardsResult")
+                </td>
+                <td class="question" colspan="2">
+                    D2 Termination
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_D2PipeworkCorrectlyTerminatedResult")
+                </td>
+            </tr>
+            <tr>
+                <td class="question" colspan="2">
+                    Tundish
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_TundishFittedCorrectlyResult")
+                </td>
+                <td class="question" colspan="2">
+                    Electrical Conditions
+                </td>
+                <td class="answer">
+                    @Model.Answers.GetValue("E_ElectricalConnectionsSoundResult")
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section section-half">
+        <h2 class="section-header">Expansion Vessel Details</h2>
         <table class="question-table" cellspacing=0>
             <tr>
                 <td class="question" colspan="4">
@@ -191,118 +270,6 @@
         </table>
     </div>
 
-    <div class="section section-third">
-        <h2 class="section-header">Company & Engineer Details</h2>
-        <table class="question-table" cellspacing=0>
-            <tr>
-                <td class="question" colspan="3">
-                    Company Name
-                </td>
-                <td class="answer" colspan="6">
-                    @Model.Company.CompanyName
-                </td>
-            </tr>
-            <tr>
-                <td class="question" colspan="3">
-                    Company Address
-                </td>
-                <td class="answer" colspan="6">
-                    @(Model.Company.Address.AddressOne + " " + Model.Company.Address.AddressTwo + ", " + Model.Company.Address.City + " " + Model.Company.Address.Postcode)
-                </td>
-            </tr>
-            <tr>
-                <td class="question" colspan="3">
-                    Engineer Name
-                </td>
-                <td class="answer" colspan="6">
-                    @(Model.Engineer.FirstName + " " + Model.Engineer.LastName)
-                </td>
-            </tr>
-        </table>
-
-        <h2 class="section-header">Discharge Pipework</h2>
-        <table class="question-table" cellspacing=0>
-            <tr>
-                <td class="question" colspan="2">
-                    D1 Installed to MI/BS?
-                </td>
-                <td class="answer">
-                    @Model.Answers.GetValue("E_D1FittedToStandardsResult")
-                </td>
-            </tr>
-            <tr>
-                <td class="question" colspan="2">
-                    D2 Installed to MI/BS?
-                </td>
-                <td class="answer">
-                    @Model.Answers.GetValue("E_D2FittedToStandardsResult")
-                </td>
-            </tr>
-            <tr>
-                <td class="question" colspan="2">
-                    Installed and Comissioned to MI/BS?
-                </td>
-                <td class="answer">
-                    @*TODO: Answer*@
-                    Yes
-                </td>
-            </tr>
-            <tr>
-                <td class="question" colspan="2">
-                    Manufacturers Warning Label Attached?
-                </td>
-                <td class="answer">
-                    @*TODO: Answer*@
-                    @Model.Answers.GetValue("E_WarningNoticeRequiredResult")
-                </td>
-            </tr>
-        </table>
-
-        <h2 class="section-header">System Checks</h2>
-        <table class="question-table" cellspacing=0>
-            <tr>
-                <td class="question" colspan="2">
-                    Relief Valve Type
-                </td>
-                <td class="answer">
-                    @Model.Answers.GetValue("E_ReliefValveTypeResult")
-                </td>
-            </tr>
-            <tr>
-                <td class="question" colspan="2">
-                    Relief Valve
-                </td>
-                <td class="answer">
-                    @Model.Answers.GetValue("E_ReliefValveServiceabilityResult")
-                </td>
-            </tr>
-            <tr>
-                <td class="question" colspan="2">
-                    Thermostat & Energy cut out?
-                </td>
-                <td class="answer">
-                    @Model.Answers.GetValue("E_ThermostatCutOutResult")
-                </td>
-            </tr>
-            <tr>
-                <td class="question" colspan="2">
-                    Check operation of motorised valve
-                </td>
-                <td class="answer">
-                    @Model.Answers.GetValue("E_CheckMotorisedValveResult", "N/A")
-                </td>
-            </tr>
-            <tr>
-                <td class="question" colspan="2">
-                    Tee present?
-                </td>
-                <td class="answer">
-                    @Model.Answers.GetValue("E_ColdWaterTeeFittedResult")
-                </td>
-            </tr>
-        </table>
-    </div>
-
     <div class="section section-half">
         <h2 class="section-header">Thermostat & Cylinder Checks</h2>
         <table class="question-table" cellspacing=0>
@@ -347,20 +314,7 @@
                 <td class="answer">
                     @Model.Answers.GetValue("E_NumberOfImmersionHeaters")
                 </td>
-            </tr>
-            <tr>
-                <td class="question" colspan="3">
-                    Max hot water temp
-                </td>
-                <td class="answer">
-                    @Model.Answers.GetValue("E_MaxHotWaterTemp")<span class="units">&deg;C</span>
-                </td>
-                <td class="question" colspan="3">
-                    Hot & Cold supplies balanced?
-                </td>
-                <td class="answer">
-                    @Model.Answers.GetValue("E_HotAndColdSuppliesBalancedResult")
-                </td>
+
             </tr>
             <tr>
                 <td class="question" colspan="3">
@@ -385,12 +339,13 @@
                 </td>
             </tr>
         </table>
-
-        @{ await Html.RenderPartialAsync("SignOffSection"); }
     </div>
 
     <div class="section section-half">
         @{ await Html.RenderPartialAsync("DefectsSection"); }
+    </div>
+    <div class="section section-half">
+        @{ await Html.RenderPartialAsync("SignOffSection"); }
     </div>
 </body>
 

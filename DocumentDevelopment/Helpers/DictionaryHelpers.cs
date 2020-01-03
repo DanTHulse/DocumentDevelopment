@@ -2,7 +2,7 @@
 
 namespace DocumentDevelopment.Helpers
 {
-    public static class DictionaryHelpers
+    public static class DictionaryExtensions
     {
         public static void AddIfNotNull<T, U>(this IDictionary<T, U> dict, T key, U value) where U : class
         {
@@ -12,9 +12,9 @@ namespace DocumentDevelopment.Helpers
             }
         }
 
-        public static U GetValue<T, U>(this IDictionary<T, U> dict, T key, U defaultValue = default(U))
+        public static string GetValue(this IDictionary<string, string> dict, string key, string defaultValue = "")
         {
-            return dict.TryGetValue(key, out U value) ? value : defaultValue;
+            return dict.TryGetValue(key, out var value) ? value : defaultValue;
         }
     }
 }
