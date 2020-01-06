@@ -1,0 +1,52 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Discharge Pipework</h2>
+    <table class="question-table" cellspacing=0>
+        <tr>
+            <td class="question" colspan="2">
+                Material Suitable?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_D1D2MaterialSuitableResult")
+            </td>
+            <td class="question" colspan="2">
+                D1 Suitable?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_D1FittedToStandardsResult")
+            </td>
+
+        </tr>
+        <tr>
+            <td class="question" colspan="2">
+                D2 Suitable?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_D2FittedToStandardsResult")
+            </td>
+            <td class="question" colspan="2">
+                D2 Termination
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_D2PipeworkCorrectlyTerminatedResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="2">
+                Tundish
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_TundishFittedCorrectlyResult")
+            </td>
+            <td class="question" colspan="2">
+                Electrical Conditions
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_ElectricalConnectionsSoundResult")
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,52 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    @{ await Html.RenderPartialAsync("DocumentStyle"); }
+
+</head>
+
+<body class="main-content">
+    <div class="section section-full">
+        <img class="logo" src="https://gastag.s3-eu-west-1.amazonaws.com/RefImages/Emails/Logo-plus-Tagline.png" />
+        <h1 class="title">
+            Annual Solar Thermal Equipment Service
+        </h1>
+        <p class="description">
+            Please note where gas is used as a primary or secondary source to heat the hot water this
+            document does not eliminate the requirement for a seperate Landlord's Gas Safety
+            Record (LGSR) to be completed.
+        </p>
+    </div>
+
+    <div class="section section-third">
+        @{ await Html.RenderPartialAsync("Solar_CustomerDetails"); }
+    </div>
+
+    <div class="section section-third">
+        @{ await Html.RenderPartialAsync("Solar_LandlordDetails"); }
+    </div>
+
+    <div class="section section-third">
+        @{ await Html.RenderPartialAsync("Solar_CompanyDetails"); }
+    </div>
+
+    <div class="section section-half">
+        @{ await Html.RenderPartialAsync("Solar_EquipmentDetails"); }
+
+        @{ await Html.RenderPartialAsync("Shared_DefectsSectionFull"); }
+
+        @{ await Html.RenderPartialAsync("Shared_SignOffSection"); }
+    </div>
+
+    <div class="section section-half">
+        @{ await Html.RenderPartialAsync("Solar_SolarSystemChecks"); }
+    </div>
+</body>
+
+</html>

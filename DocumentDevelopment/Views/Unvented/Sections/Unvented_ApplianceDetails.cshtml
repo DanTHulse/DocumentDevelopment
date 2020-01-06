@@ -1,0 +1,79 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Appliance Details</h2>
+    <table class="question-table" cellspacing=0>
+        <tr>
+            <td class="question" colspan="7">
+                Location
+            </td>
+            <td class="answer" colspan="10">
+                @Model.Appliance.ApplianceLocation
+            </td>
+            <td class="question" colspan="7">
+                Make
+            </td>
+            <td class="answer" colspan="10">
+                @Model.Appliance.Make
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="7">
+                Model
+            </td>
+            <td class="answer" colspan="10">
+                @Model.Appliance.Model
+            </td>
+            <td class="question" colspan="7">
+                Type of Control System
+            </td>
+            <td class="answer" colspan="10">
+                @Model.Appliance.Payload.GetValue("E_ControlSystemType")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="7">
+                Capacity
+            </td>
+            <td class="answer" colspan="10">
+                @Model.Appliance.Payload.GetValue("E_Capacity") <span class="units">Ltrs</span>
+            </td>
+            <td class="question" colspan="7">
+                Renewables Compatible
+            </td>
+            <td class="answer" colspan="10">
+                @Model.Answers.GetValue("E_SolarRenewablesCompatibleResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="7">
+                Max Primary Flow Temp
+            </td>
+            <td class="answer" colspan="10">
+                @Model.Answers.GetValue("E_MaximumFlowTemp")<span class="units">&deg;C</span>
+            </td>
+            <td class="question" colspan="7">
+                Inlet Water Pressure
+            </td>
+            <td class="answer" colspan="10">
+                @Model.Answers.GetValue("E_InletWaterPressure")<span class="units">bar</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="7">
+                Primary Heat Source
+            </td>
+            <td class="answer" colspan="10">
+                @Model.Answers.GetValue("E_PrimaryHeatsource")
+            </td>
+            <td class="question" colspan="7">
+                Heat Source Type
+            </td>
+            <td class="answer" colspan="10">
+                @Model.Answers.GetValue("E_Heatsource")
+            </td>
+        </tr>
+    </table>
+</div>

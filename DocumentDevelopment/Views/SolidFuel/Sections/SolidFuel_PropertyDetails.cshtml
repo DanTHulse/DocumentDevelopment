@@ -1,0 +1,43 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section section-header">Property Details</h2>
+    <table class="question-table" cellspacing=0>
+        <tr>
+            <td class="question" colspan="1">
+                Customer Name:
+            </td>
+            <td class="answer" colspan="3" height=20>
+                @Model.Landlord.Name
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="1">
+                Address:
+            </td>
+            <td class="answer" colspan="3" height=40>
+                @Model.Property.Address.AddressOne<br />
+                @Model.Property.Address.AddressTwo<br />
+                @Model.Property.Address.City, @Model.Property.Address.County
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="1">
+                Postcode:
+            </td>
+            <td class="answer" colspan="3">
+                @Model.Property.Address.Postcode
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="1">
+                Email
+            </td>
+            <td class="answer" colspan="3">
+                @Model.Property.TenantEmail
+            </td>
+        </tr>
+    </table>
+</div>

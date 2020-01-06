@@ -1,0 +1,25 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Environment Hazard - Part 2</h2>
+    <table class="question-table" cellspacing="0">
+        <tr>
+            <td class="question" colspan="8">
+                Tank is located in a flood risk area or is exposed to high wind?
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Answers.GetValue("E_TankLocatedInFloodHighWindRiskResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="8">
+                Is a Tank restraint provided as recommended by the Tank manufacturer?
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Answers.GetValue("E_TankRestraintProvdedResult")
+            </td>
+        </tr>
+    </table>
+</div>

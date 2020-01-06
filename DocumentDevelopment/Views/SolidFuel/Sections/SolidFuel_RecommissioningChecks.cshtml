@@ -1,0 +1,59 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Re-Commissioning Checks</h2>
+    <table class="question-table" cellspacing=0>
+        <tr>
+            <td colspan="5" class="question"></td>
+            <td colspan="2" class="answer" style="text-align: center">
+                <b>RESULT</b>
+            </td>
+            <td colspan="6" class="answer" style="text-align: center;">
+                <b>NOTES</b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" class="question">
+                Smoke Draw Test:
+            </td>
+            <td colspan="2" style="text-align: center" class="answer">
+                @Model.Answers.GetValue("E_SmokeDrawTestResult")
+            </td>
+            <td colspan="6" class="answer">
+                @Model.Answers.GetValue("E_SmokeDrawTestNotes")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" class="question">
+                Flue Draught Extraction Test:
+            </td>
+            <td colspan="2" style="text-align: center" class="answer">
+                @Model.Answers.GetValue("E_FlueDraughtExtractionTestResult")
+            </td>
+            <td colspan="6" class="answer">
+                @Model.Answers.GetValue("E_FlueDraughtExtractionTestNotes")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" class="question">
+                Spillage Test:
+            </td>
+            <td colspan="2" style="text-align: center" class="answer">
+                @Model.Answers.GetValue("E_SpillageTestResult")
+            </td>
+            <td colspan="6" class="answer">
+                @Model.Answers.GetValue("E_SpillageTestNotes")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="10" class="question">
+                General manufacturer checks undertaken?
+            </td>
+            <td colspan="3" style="text-align: center" class="answer">
+                @Model.Answers.GetValue("E_GeneralChecksUndertakenResult")
+            </td>
+        </tr>
+    </table>
+</div>

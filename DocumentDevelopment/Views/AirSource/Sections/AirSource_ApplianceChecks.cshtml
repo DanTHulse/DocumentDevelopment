@@ -1,0 +1,121 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Appliance Checks</h2>
+    <table class="question-table" cellspacing="0">
+        <tr>
+            <td class="question" colspan="2">
+                Has the expansion vessel charge been checked?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_ExpansionVesselChargeCheckedResult")
+            </td>
+            <td class="question" colspan="2">
+                Has the magnetic system filter been charged?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_MagneticFilterCleanedResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="2">
+                Heating system glycol concentration level
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_GlycolConcentration")<span class="units">%</span>
+            </td>
+            <td class="question" colspan="2">
+                Does it meet manufacturers instructions & specifications?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_GlycolConcetrationMeetsSpecsResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="2">
+                Visual inspection of radiators & heating pipework?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_VisualInspectionOfPipeworkResult")
+            </td>
+            <td class="question" colspan="2">
+                Compressor running current
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_CompressorRunningCurrent")<span class="units">Amp</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="2">
+                Check operations, thermostats and controls
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_OperationChecksResult")
+            </td>
+            <td class="question" colspan="2">
+                Check operations of motorised valves if fitted
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_MotorisedValvesCheckedResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="2">
+                Inspect and clean heat exchanger
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_HeatExchangerInspectedResult")
+            </td>
+            <td class="question" colspan="2">
+                Inspect and clean integral "Y" strainer
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_YStrainerInspectedResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="2">
+                All electrical connections & mains isolator
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_ElectricalConnectionsCheckedResult")
+            </td>
+            <td class="question" colspan="2">
+                Integrity of water pipework & lagging
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_IntegrityOfWaterPiperworkResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Unit operation voltage
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_OperationVoltageCheckedResult")
+            </td>
+            <td class="question">
+                Check for leaks
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_InspectedForSignsOfLeaksResult")
+            </td>
+            <td class="question">
+                Check fuse rating
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_FuseRating")<span class="units">Amp</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="5">
+                Is the appliance safe to use?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_SafeToUseResult")
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,119 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Tests / Observations</h2>
+    <table class="question-table" cellspacing=0>
+        <tr>
+            <td class="question" colspan="3">
+                Deposits Removed
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_DepositRemoved")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Deposit Detail
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_DepositDetail")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Fire Risk
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_FireRiskResult")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Smoke Test Type II (Cold)
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_SmokeTestTypeTwoResult")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Ventilation
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_VentilationResult")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                CCTV Inspection
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_CCTVInspectionResult")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Pressure Test
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_PressureTestResult")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Sweep Method
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_SweepMethod")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Next Sweep Date
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @(chimney.NextSweepDate.HasValue ? chimney.NextSweepDate.Value.ToString("yyyy-MM-dd") : "")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Warning Notice Issued?
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_UnsafeProcedureRequiredResult")
+                </td>
+            }
+        </tr>
+    </table>
+</div>

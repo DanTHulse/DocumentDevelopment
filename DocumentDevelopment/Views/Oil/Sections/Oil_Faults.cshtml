@@ -1,0 +1,33 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Faults</h2>
+    <table class="question-table" cellspacing="0">
+        <tr>
+            <td class="question" colspan="7">
+                Has a warning label been affixed to the equipment?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_WarningLabelAffixedResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="7">
+                Is it strongly recommended that these faults are remedied urgently?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_UrgentFaultsResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="7">
+                The equipment should not be used unitl the faults are rectified?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_ShouldEquipmentBeUsedResult")
+            </td>
+        </tr>
+    </table>
+</div>

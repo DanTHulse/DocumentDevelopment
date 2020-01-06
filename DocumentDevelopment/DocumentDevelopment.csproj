@@ -26,51 +26,37 @@
     <None Update="libwkhtmltox.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Views\ASHP.cshtml">
+
+    <ContentWithTargetPath Include="Views\Shared\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\CD10T.cshtml">
+      <TargetPath>Views\%(FileName)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+
+    <ContentWithTargetPath Include="Views\Unvented\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\CD11.cshtml">
+      <TargetPath>Views\%(FileName)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+
+    <ContentWithTargetPath Include="Views\SolidFuel\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\CD12.cshtml">
+      <TargetPath>Views\%(FileName)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+
+    <ContentWithTargetPath Include="Views\AirSource\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\ChimneySweeping.cshtml">
+      <TargetPath>Views\%(FileName)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+
+    <ContentWithTargetPath Include="Views\Oil\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\Shared\DefectsSection.cshtml">
+      <TargetPath>Views\%(FileName)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+
+    <ContentWithTargetPath Include="Views\Solar\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\Shared\DetailsSection.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\Shared\DocumentStyle.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\Shared\SignOffSection.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\Solar.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\SolidFuelServicing.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\TI133D.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\UnventedCommission.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\UnventedServicing.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Views\UnventedCommision.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+      <TargetPath>Views\%(FileName)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+    
   </ItemGroup>
 
 </Project>

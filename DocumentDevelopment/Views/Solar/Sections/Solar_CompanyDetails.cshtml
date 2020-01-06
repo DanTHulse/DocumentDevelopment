@@ -1,0 +1,36 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Company & Engineer Details</h2>
+    <table class="question-table" cellspacing=0>
+        <tr>
+            <td class="question">
+                Company Name
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Company?.CompanyName
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Company Address
+            </td>
+            <td class="answer" colspan="2" style="height: 25px;">
+
+                @(Model.Company?.Address?.AddressOne + " " + Model.Company?.Address?.AddressTwo)<br />
+                @(Model.Company?.Address?.City + " " + Model.Company?.Address?.Postcode)
+
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Engineer Name
+            </td>
+            <td class="answer" colspan="2">
+                @(Model.Engineer.FirstName + " " + Model.Engineer.LastName)
+            </td>
+        </tr>
+    </table>
+</div>

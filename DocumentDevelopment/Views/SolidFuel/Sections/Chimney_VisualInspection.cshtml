@@ -1,0 +1,53 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Visual Inspection</h2>
+    <table class="question-table" cellspacing=0>
+        <tr>
+            <td class="question" colspan="3">
+                Flue
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_FlueResult")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Stack
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_StackResult")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Pot
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_PotResult")
+                </td>
+            }
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Cowl
+            </td>
+            @foreach (var chimney in Model.Chimneys)
+            {
+                <td class="answer" colspan="2">
+                    @chimney.Answers.GetValue("E_CowlResult")
+                </td>
+            }
+        </tr>
+    </table>
+</div>

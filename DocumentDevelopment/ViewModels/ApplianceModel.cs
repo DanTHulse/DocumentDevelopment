@@ -13,7 +13,7 @@ namespace DocumentDevelopment.ViewModels
         public string FlueType { get; set; }
         public string SerialNumber { get; set; }
         public DateTime NextServiceDate { get; set; }
-        public DateTime NextSweepDate { get; set; }
+        public DateTime? NextSweepDate { get; set; }
         public bool FireAssessmentCarriedOut { get; set; }
 
         public string PayloadString { get; set; }

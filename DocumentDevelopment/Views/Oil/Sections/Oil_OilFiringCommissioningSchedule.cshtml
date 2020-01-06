@@ -1,0 +1,107 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Oil Firing Service and Commissioning Schedule</h2>
+    <table class="question-table" cellspacing="0">
+        <tr>
+            <td class="question">
+                Oil Storage
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_OilSupplyDefectsResult")
+            </td>
+            <td class="question">
+                Air Supply
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_AdequateVentilationResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Fuse Rating
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_ApplianceFuseRating")<span class="units"> Amp</span>
+            </td>
+            <td class="question">
+                Fuse Compliant
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_FuseRatingWithinManufacturerRangeResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Appliance Saftey Controls
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_CheckedApplianceSafetyControlsResult")
+            </td>
+            <td class="question">
+                Combustion Chamber
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_CombustionChamberCleanedToInstructionResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Wallflame Burner
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_WallflameFurtherChecksResult")
+            </td>
+            <td class="question">
+                Chimney/Flue
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_FlueInstalledToInstructionResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Heat Exchanger
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_HeatExchangerCleanedToInstructionResult")
+            </td>
+            <td class="question">
+                Electrical Safety
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_AreAppliancesElectricallySafeResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Controls Check
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_CheckedControlsResult")
+            </td>
+            <td class="question">
+                Jet Burner
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_PressureJetCleanedToInstructionResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Hot Water System Check
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_HotWaterChecksPerformedResult")
+            </td>
+            <td class="question">
+                Warm Air System Check
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_WarmAirChecksPerformedResult")
+            </td>
+        </tr>
+    </table>
+</div>

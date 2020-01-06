@@ -1,0 +1,161 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Equipment Details</h2>
+    <table class="question-table" cellspacing=0>
+        <tr>
+            <td class="question" colspan="3">
+                System Type
+            </td>
+            <td class="answer" colspan="12">
+                @Model.Appliance.Payload.GetValue("E_SystemType")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Cylinder Make
+            </td>
+            <td class="answer" colspan="5">
+                @Model.Appliance.Payload.GetValue("E_CylinderMake")
+            </td>
+            <td class="question" colspan="3">
+                Cylinder Model
+            </td>
+            <td class="answer" colspan="4">
+                @Model.Appliance.Payload.GetValue("E_CylinderModel")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Cylinder S/N
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Appliance.Payload.GetValue("E_CylinderSerialNumber")
+            </td>
+            <td class="question" colspan="3">
+                Cylinder Type
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Appliance.Payload.GetValue("E_CylinderType")
+            </td>
+            <td class="question" colspan="3">
+                Cylinder Size
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Appliance.Payload.GetValue("E_CylinderSize")<span class="units">Ltrs</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Collector Make
+            </td>
+            <td class="answer" colspan="5">
+                @Model.Appliance.Payload.GetValue("E_CollectorMake")
+            </td>
+            <td class="question" colspan="3">
+                Collector Model
+            </td>
+            <td class="answer" colspan="4">
+                @Model.Appliance.Payload.GetValue("E_CollectorModel")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Collector S/N
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Appliance.Payload.GetValue("E_CollectorSerialNumber")
+            </td>
+            <td class="question" colspan="3">
+                Collector Type
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Appliance.Payload.GetValue("E_CollectorType")
+            </td>
+            <td class="question" colspan="3">
+                No. of Collectors
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Appliance.Payload.GetValue("E_NumberOfCollectors")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="4">
+                Pump Station Make
+            </td>
+            <td class="answer" colspan="4">
+                @Model.Appliance.Payload.GetValue("E_PumpStationMake")
+            </td>
+            <td class="question" colspan="4">
+                Pump Station Model
+            </td>
+            <td class="answer" colspan="3">
+                @Model.Appliance.Payload.GetValue("E_PumpStationModel")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="4">
+                Pump Station S/N
+            </td>
+            <td class="answer" colspan="4">
+                @Model.Appliance.Payload.GetValue("E_PumpStationSerialNumber")
+            </td>
+            <td class="question" colspan="4">
+                No. of Pumps
+            </td>
+            <td class="answer" colspan="3">
+                @Model.Appliance.Payload.GetValue("E_NumberOfPumps")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Drain Back Tank Make
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Appliance.Payload.GetValue("E_DrainBackTankMake")
+            </td>
+            <td class="question" colspan="3">
+                Drain Back Tank Model
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Appliance.Payload.GetValue("E_DrainBackTankModel")
+            </td>
+            <td class="question" colspan="3">
+                Drain Back Tank S/N
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Appliance.Payload.GetValue("E_DrainBackTankSerialNumber")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="3">
+                Expansion Vessel Size
+            </td>
+            <td class="answer" colspan="5">
+                @Model.Appliance.Payload.GetValue("E_ExpansionVesselSize")<span class="units">Ltrs</span>
+            </td>
+            <td class="question" colspan="3">
+                Expansion Pre Charge Setting
+            </td>
+            <td class="answer" colspan="4">
+                @Model.Appliance.Payload.GetValue("E_ExVesselPreChargeSetting") <span class="units">bar</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="4">
+                Appliance Condition
+            </td>
+            <td class="answer" colspan="4">
+                @Model.Appliance.Payload.GetValue("E_ApplianceCondition")
+            </td>
+            <td class="question" colspan="4">
+                Landlord's Appliance
+            </td>
+            <td class="answer" colspan="3">
+                @Model.Appliance.Payload.GetValue("E_LandlordsAppliance")
+            </td>
+        </tr>
+    </table>
+</div>

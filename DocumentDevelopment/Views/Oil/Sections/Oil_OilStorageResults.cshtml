@@ -1,0 +1,73 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Oil Storage Results</h2>
+    <table class="question-table" cellspacing="0">
+        <tr>
+            <td class="question" colspan="8">
+                T1/133 Spillage and Fire Assessment been completed on the Oil Tank?
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Appliance.FireAssessmentCarriedOut.ToBooleanString("Yes", "No")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="8">
+                Remote Fill System Fitted and Tested?
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Answers.GetValue("E_RemoteFillSystemTestedResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="8">
+                Overfill Alarm Facility Provided?
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Answers.GetValue("E_OverfillAlarmFittedResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="8">
+                Oil Supply Line Outside Diameter
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Answers.GetValue("E_OilSupplyLineOD")<span class="units"> mm</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="8">
+                Oil Supply Type
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Answers.GetValue("E_OilSupplyType")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="8">
+                Pressure Tested?
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Answers.GetValue("E_PressureTestedResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="8">
+                Remote Sensing Fire Valve Fitted?
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Answers.GetValue("E_RemoteSensingFireValveFittedResult")
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="8">
+                Oil Pipe Installed as per Manufacturer instruction and British Standards?
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Answers.GetValue("E_OilPipeMeetsStandardsResult")
+            </td>
+        </tr>
+    </table>
+</div>

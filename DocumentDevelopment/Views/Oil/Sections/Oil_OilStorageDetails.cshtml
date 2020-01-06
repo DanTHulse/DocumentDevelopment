@@ -1,0 +1,59 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Oil Storage Details</h2>
+    <table class="question-table" cellspacing="0">
+        <tr>
+            <td class="question" colspan="1">
+                Location
+            </td>
+            <td class="answer" colspan="3">
+                @Model.Appliance.ApplianceLocation
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Serial Number
+            </td>
+            <td class="answer">
+                @Model.Appliance.SerialNumber
+            </td>
+            <td class="question">
+                Tank Type
+            </td>
+            <td class="answer">
+                @Model.Appliance.Payload.GetValue("E_TankType")
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Make
+            </td>
+            <td class="answer">
+                @Model.Appliance.Make
+            </td>
+            <td class="question">
+                Model
+            </td>
+            <td class="answer">
+                @Model.Appliance.Model
+            </td>
+        </tr>
+        <tr>
+            <td class="question">
+                Appliance Condition
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_ApplianceCondition")
+            </td>
+            <td class="question">
+                Landlord's Appliance?
+            </td>
+            <td class="answer">
+                @Model.Answers.GetValue("E_LandlordsApplianceResult")
+            </td>
+        </tr>
+    </table>
+</div>

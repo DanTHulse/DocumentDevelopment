@@ -1,0 +1,45 @@
+﻿@model DocumentDevelopment.ViewModels.DocumentData
+@using DocumentDevelopment.Helpers;
+
+<!DOCTYPE html>
+<div>
+    <h2 class="section-header">Installation Details</h2>
+    <table class="question-table" cellspacing=0>
+        <tr>
+            <td class="question" colspan="2">
+                Installation Location:
+            </td>
+            <td class="answer" colspan="4">
+                @Model.Appliance.ApplianceLocation
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="2">
+                Appliance Make/Model:
+            </td>
+            <td class="answer" colspan="2">
+                @(Model.Appliance.Make + " " + Model.Appliance.Model)
+            </td>
+            <td class="question" colspan="1">
+                Output:
+            </td>
+            <td class="answer" style="text-align: center;" colspan="1">
+                @Model.Appliance.Payload.GetValue("E_Output")<span class="units"> kW</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="question" colspan="2">
+                Ventilation Type:
+            </td>
+            <td class="answer" colspan="2">
+                @Model.Appliance.Payload.GetValue("E_VentilationType")
+            </td>
+            <td class="question" colspan="1">
+                Size:
+            </td>
+            <td class="answer" style="text-align: center;" colspan="1">
+                @Model.Appliance.Payload.GetValue("E_Size")<span class="units"> mm2</span></>
+            </td>
+        </tr>
+    </table>
+</div>
