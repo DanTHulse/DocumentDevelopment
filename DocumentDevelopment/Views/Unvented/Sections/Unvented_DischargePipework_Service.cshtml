@@ -26,8 +26,7 @@
                 Installed and Comissioned to MI/BS?
             </td>
             <td class="answer">
-                @*TODO: Answer*@
-                Yes
+                @Model.Answers.GetValue("E_InstalledWithManufacturerInstructionsResult")
             </td>
         </tr>
         <tr>
@@ -35,7 +34,6 @@
                 Manufacturers Warning Label Attached?
             </td>
             <td class="answer">
-                @*TODO: Answer*@
                 @Model.Answers.GetValue("E_WarningNoticeRequiredResult")
             </td>
         </tr>

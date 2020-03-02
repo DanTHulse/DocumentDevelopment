@@ -258,7 +258,7 @@
                 Defects Identified?
             </td>
             <td class="answer">
-                @(Model.Defects.Any() ? "Yes" : "No")
+                @Model.Answers.GetValue("E_AnyDefectsResult")
             </td>
         </tr>
         <tr>

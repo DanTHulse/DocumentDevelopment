@@ -202,7 +202,7 @@ namespace DocumentDevelopment.Data
                     { "E_VisualInspectionOfPipeworkResult", "Yes" },
                     { "E_CompressorRunningCurrent", "1234" },
                     { "E_OperationChecksResult", "Yes" },
-                    { "E_MotorisedValvesCheckedResult", "Yes" },
+                    { "E_MotorisedValvesChecked", "Yes" },
                     { "E_HeatExchangerInspectedResult", "Yes" },
                     { "E_YStrainerInspectedResult", "Yes" },
                     { "E_ElectricalConnectionsCheckedResult", "Yes" },
@@ -410,6 +410,7 @@ namespace DocumentDevelopment.Data
                     { "E_ApplianceSafeToUseResult", "Yes" },
                     { "E_CheckMotorisedValveResult", "Yes" },
                     { "E_ImmersionHeaterPresentResult", "Yes" },
+                    { "E_InstalledWithManufacturerInstructionsResult", "Yes" },
                     #endregion
 
                     #region General
@@ -432,6 +433,7 @@ namespace DocumentDevelopment.Data
                     { "E_SafeToUseResult", "Yes" },
                     { "E_LandlordsApplianceResult", "Yes" },
                     { "E_ControlsWorkingResult", "Yes" },
+                    { "E_AnyDefects", "Yes" }
                     #endregion
                 };
             }
