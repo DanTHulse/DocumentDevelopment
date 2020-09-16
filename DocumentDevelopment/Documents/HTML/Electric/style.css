@@ -1,0 +1,176 @@
+html * {
+	font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  }
+
+.footer {
+	page-break-after: always;
+}
+
+.main-content {
+	padding: 20px;
+}
+
+.title {
+	font-size: 18px;
+	color: #1D5385;
+	margin-bottom: 0;
+}
+
+.sub-title {
+	font-size: 13px;
+	color: #333333;
+}
+
+.statement-list {
+	counter-reset: list;
+	margin-left: 30px;
+}
+
+.statement-list > li {
+	list-style: none;
+	position: relative;
+	padding-bottom: 15px;
+	font-size: 13px;
+}
+
+.statement-list > li:before {
+	content: "(" counter(list, lower-roman) ") ";
+	counter-increment: list;
+	position: absolute;
+	left: -35px;
+}
+
+.section-header {
+	width: 100%;
+	padding: 4px 0 4px 0;
+	margin: 5px 0 0 0;
+	background-color: #1D5385;
+	border-radius: 10px 10px 0 0;
+}
+
+.section-title {
+	color: white;
+	font-size: 12px;
+	padding-left: 10px;
+	margin: 0;
+}
+
+.section-title > span {
+	font-size: 11px;
+	font-weight: lighter;
+}
+
+.section {
+	display: inline-block;
+	vertical-align: top;
+	width: 98.4%;
+}
+
+.sub-section {
+	padding: 4px 0 4px 0;
+	margin: 5px 0 0 0;
+	background-color: #1D5385;
+}
+
+.sub-section-alt {
+	padding: 4px 0 4px 0;
+	margin: 5px 0 0 0;
+	background-color: #5A5A5A;
+}
+
+.question-table {
+	width: 100%;
+	table-layout: fixed;
+	font-size: 10px;
+	margin: 0;
+	overflow-wrap: break-word;
+}
+
+.sub-question-table {
+	width: 100%;
+	clear: both;
+}
+
+.question {
+	text-align: left;
+	background-color: #2569B2;
+	color: white;
+	border: 1px solid #C4C4C4;
+	padding: 2px 1px 5px 10px;
+}
+
+.question-alt {
+	text-align: left;
+	background-color: #DEDEDE;
+	color: #1D5385;
+	border: 1px solid #C4C4C4;
+	padding: 2px 1px 5px 10px;
+}
+
+.question-additional {
+	font-size: 8px;
+}
+
+.answer {
+	text-align: left;
+	color: #1D5385;
+	border: 1px solid #C4C4C4;
+	padding: 2px 1px 5px 10px;
+	vertical-align: top;
+}
+
+.units {
+	float: left;
+	margin-right: 5px;
+	color: #1D5385;
+}
+
+.center-text {
+	text-align: center;
+}
+
+.sub-question-table > label {
+	margin-top: 2px;
+	float: left;
+}
+
+.sub-question-table > input {
+	float: right;
+}
+
+.input-cell {
+	border-bottom: 1px solid #C4C4C4;
+}
+
+.sub {
+	padding-top: 10px;
+	font-size: 9px;
+}
+
+tr:last-child td:first-child {
+	border-bottom-left-radius: 10px;
+}
+
+tr:last-child td:last-child {
+	border-bottom-right-radius: 10px;
+}
+
+th:first-child {
+	border-top-left-radius: 10px;
+}
+
+th:last-child {
+	border-top-right-radius: 10px;
+}
+
+.logo {
+	float: right;
+	border: none;
+	outline: none;
+	height: 60px;
+	opacity: 1;
+	width: 100px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
