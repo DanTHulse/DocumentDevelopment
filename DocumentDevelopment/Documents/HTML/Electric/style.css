@@ -129,15 +129,6 @@ html * {
 	text-align: center;
 }
 
-.sub-question-table > label {
-	margin-top: 2px;
-	float: left;
-}
-
-.sub-question-table > input {
-	float: right;
-}
-
 .input-cell {
 	border-bottom: 1px solid #C4C4C4;
 }
