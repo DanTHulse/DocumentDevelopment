@@ -166,7 +166,7 @@ html * {
 }
 
 .units {
-	float: left;
+	float: right;
 	margin-right: 5px;
 	color: #1D5385;
 }
