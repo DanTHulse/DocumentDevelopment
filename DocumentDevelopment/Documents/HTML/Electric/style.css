@@ -4,6 +4,15 @@ html * {
 
 .footer {
 	page-break-after: always;
+	position: relative;
+}
+
+.footer-page-number {
+	font-size: 11px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-weight: bold;
 }
 
 .main-content {
@@ -116,6 +125,15 @@ html * {
 	padding: 2px 1px 5px 10px;
 }
 
+.question-alt-strong {
+	text-align: center;
+	background-color: #5A5A5A;
+	font-weight: bold;
+	color: white;
+	border: 1px solid #C4C4C4;
+	padding: 2px 1px 5px 10px;
+}
+
 .question-additional {
 	font-size: 8px;
 }
@@ -155,6 +173,11 @@ html * {
 
 .center-text {
 	text-align: center;
+}
+
+.vertical-text {
+	writing-mode: vertical-lr;
+	text-orientation: sideways;
 }
 
 .input-cell {
