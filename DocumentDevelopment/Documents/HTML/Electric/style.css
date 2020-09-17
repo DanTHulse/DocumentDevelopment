@@ -18,7 +18,7 @@ html * {
 
 .sub-title {
 	font-size: 13px;
-	color: #333333;
+	color: #1D5385;
 }
 
 .statement-list {
@@ -99,6 +99,15 @@ html * {
 	padding: 2px 1px 5px 10px;
 }
 
+.question-strong {
+	text-align: center;
+	background-color: #1D5385;
+	font-weight: bold;
+	color: white;
+	border: 1px solid #C4C4C4;
+	padding: 2px 1px 5px 10px;
+}
+
 .question-alt {
 	text-align: left;
 	background-color: #DEDEDE;
@@ -117,6 +126,25 @@ html * {
 	border: 1px solid #C4C4C4;
 	padding: 2px 1px 5px 10px;
 	vertical-align: top;
+}
+
+.border-bottom-left {
+	border-bottom-left-radius: 10px;
+}
+
+.outcome-section {
+	font-size: 8px;
+	text-align: center;
+	color: #1D5385;
+	border: 1px solid #C4C4C4;
+}
+
+.outcome-section-alt {
+	font-size: 8px;
+	background-color: #DEDEDE;
+	text-align: center;
+	color: #1D5385;
+	border: 1px solid #C4C4C4;
 }
 
 .units {
