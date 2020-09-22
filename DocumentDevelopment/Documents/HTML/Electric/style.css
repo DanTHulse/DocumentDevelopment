@@ -138,9 +138,17 @@ html * {
 	font-size: 8px;
 }
 
-.answer {
+.sub-question {
 	text-align: left;
 	color: #1D5385;
+	border: 1px solid #C4C4C4;
+	padding: 2px 1px 5px 10px;
+	vertical-align: top;
+}
+
+.answer {
+	text-align: left;
+	color: #2D2D2D;
 	border: 1px solid #C4C4C4;
 	padding: 2px 1px 5px 10px;
 	vertical-align: top;
@@ -182,6 +190,7 @@ html * {
 
 .input-cell {
 	border-bottom: 1px solid #C4C4C4;
+	color: #2D2D2D;
 }
 
 .sub {
