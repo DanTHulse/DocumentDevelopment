@@ -211,7 +211,7 @@ th:last-child {
 	outline: none;
 	height: 60px;
 	opacity: 1;
-	width: 100px;
+	width: auto;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center center;
