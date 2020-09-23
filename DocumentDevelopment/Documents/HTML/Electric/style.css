@@ -27,19 +27,20 @@ html * {
 
 .sub-title {
 	font-size: 13px;
+	padding-bottom: 5px;
 	color: #1D5385;
 }
 
 .statement-list {
 	counter-reset: list;
 	margin-left: 30px;
+	font-size: 13px;
 }
 
 .statement-list > li {
 	list-style: none;
 	position: relative;
 	padding-bottom: 15px;
-	font-size: 13px;
 }
 
 .statement-list > li:before {
@@ -206,11 +207,11 @@ html * {
 	border: 1px solid #2569B2;
 	border-radius: 25%;
 	cursor: pointer;
-	height: 16px;
+	height: 14px;
 	left: 0;
 	position: absolute;
-	top: 0;
-	width: 16px;
+	top: 2px;
+	width: 14px;
 }
 
 .checkbox label:after {
@@ -219,10 +220,10 @@ html * {
 	border-right: none;
 	content: "";
 	height: 3px;
-	left: 4px;
+	left: 3px;
 	opacity: 0;
 	position: absolute;
-	top: 5px;
+	top: 3px;
 	transform: rotate(-45deg);
 	width: 6px;
 }
@@ -235,6 +236,10 @@ html * {
 	opacity: 1;
 }
 
+.bounding-box {
+	border: 1px solid #1D5385;
+	padding: 10px;
+}
 
 tr:last-child td:first-child {
 	border-bottom-left-radius: 10px;
