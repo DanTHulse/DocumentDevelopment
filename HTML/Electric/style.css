@@ -198,7 +198,7 @@ html * {
 
 .units {
 	float: right;
-	margin-right: 5px;
+	margin-right: 10px;
 	color: var(--main-colour);
 }
 
@@ -219,6 +219,10 @@ html * {
 .sub {
 	padding-top: 10px;
 	font-size: 9px;
+}
+
+.checkbox-label {
+	width: 10%;
 }
 
 .checkbox {
