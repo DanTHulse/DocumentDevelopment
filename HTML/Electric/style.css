@@ -1,3 +1,20 @@
+:root {
+	--main-colour: #1D5385;
+	--alt-colour: #2569B2;
+
+	/* --main-colour: #F06400;
+	--alt-colour: #FF9142; */
+
+	--text-colour: white;
+	--alt-text-colour: #2D2D2D;
+	--border-colour: #C4C4C4;
+	--section-colour: #DEDEDE;
+	--alt-section-colour: #5A5A5A;
+
+	--border: 1px solid var(--border-colour);
+	--border-radius: 10px;
+}
+
 html * {
 	font-family: Verdana, Geneva, Tahoma, sans-serif !important;
   }
@@ -21,14 +38,14 @@ html * {
 
 .title {
 	font-size: 18px;
-	color: #1D5385;
+	color: var(--main-colour);
 	margin-bottom: 0;
 }
 
 .sub-title {
 	font-size: 13px;
 	padding-bottom: 5px;
-	color: #1D5385;
+	color: var(--main-colour);
 }
 
 .answer-list {
@@ -59,12 +76,12 @@ html * {
 	width: 100%;
 	padding: 4px 0 4px 0;
 	margin: 5px 0 0 0;
-	background-color: #1D5385;
-	border-radius: 10px 10px 0 0;
+	background-color: var(--main-colour);
+	border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
 .section-title {
-	color: white;
+	color: var(--text-colour);
 	font-size: 12px;
 	padding-left: 10px;
 	margin: 0;
@@ -84,13 +101,13 @@ html * {
 .sub-section {
 	padding: 4px 0 4px 0;
 	margin: 5px 0 0 0;
-	background-color: #1D5385;
+	background-color: var(--main-colour);
 }
 
 .sub-section-alt {
 	padding: 4px 0 4px 0;
 	margin: 5px 0 0 0;
-	background-color: #5A5A5A;
+	background-color: var(--alt-section-colour);
 }
 
 .question-table {
@@ -108,35 +125,35 @@ html * {
 
 .question {
 	text-align: left;
-	background-color: #2569B2;
-	color: white;
-	border: 1px solid #C4C4C4;
+	background-color: var(--alt-colour);
+	color: var(--text-colour);
+	border: var(--border);
 	padding: 2px 1px 5px 10px;
 }
 
 .question-strong {
 	text-align: center;
-	background-color: #1D5385;
+	background-color: var(--main-colour);
 	font-weight: bold;
-	color: white;
-	border: 1px solid #C4C4C4;
+	color: var(--text-colour);
+	border: var(--border);
 	padding: 2px 1px 5px 10px;
 }
 
 .question-alt {
 	text-align: left;
-	background-color: #DEDEDE;
-	color: #1D5385;
-	border: 1px solid #C4C4C4;
+	background-color: var(--section-colour);
+	color: var(--main-colour);
+	border: var(--border);
 	padding: 2px 1px 5px 10px;
 }
 
 .question-alt-strong {
 	text-align: center;
-	background-color: #5A5A5A;
+	background-color: var(--alt-section-colour);
 	font-weight: bold;
-	color: white;
-	border: 1px solid #C4C4C4;
+	color: var(--text-colour);
+	border: var(--border);
 	padding: 2px 1px 5px 10px;
 }
 
@@ -146,43 +163,43 @@ html * {
 
 .sub-question {
 	text-align: left;
-	color: #1D5385;
-	border: 1px solid #C4C4C4;
+	color: var(--main-colour);
+	border: var(--border);
 	padding: 2px 1px 5px 10px;
 	vertical-align: top;
 }
 
 .answer {
 	text-align: left;
-	color: #2D2D2D;
-	border: 1px solid #C4C4C4;
+	color: var(--alt-text-colour);
+	border: var(--border);
 	padding: 2px 1px 5px 10px;
 	vertical-align: top;
 }
 
 .border-bottom-left {
-	border-bottom-left-radius: 10px;
+	border-bottom-left-radius: var(--border-radius);
 }
 
 .outcome-section {
 	font-size: 8px;
 	text-align: center;
-	color: #1D5385;
-	border: 1px solid #C4C4C4;
+	color: var(--main-colour);
+	border: var(--border);
 }
 
 .outcome-section-alt {
 	font-size: 8px;
-	background-color: #DEDEDE;
+	background-color: var(--section-colour);
 	text-align: center;
-	color: #1D5385;
-	border: 1px solid #C4C4C4;
+	color: var(--main-colour);
+	border: var(--border);
 }
 
 .units {
 	float: right;
 	margin-right: 5px;
-	color: #1D5385;
+	color: var(--main-colour);
 }
 
 .center-text {
@@ -195,8 +212,8 @@ html * {
 }
 
 .input-cell {
-	border-bottom: 1px solid #C4C4C4;
-	color: #2D2D2D;
+	border-bottom: var(--border);
+	color: var(--alt-text-colour);
 }
 
 .sub {
@@ -209,7 +226,7 @@ html * {
 }
 
 .checkbox label {
-	border: 1px solid #2569B2;
+	border: 1px solid var(--alt-colour);
 	border-radius: 25%;
 	cursor: pointer;
 	height: 14px;
@@ -220,7 +237,7 @@ html * {
 }
 
 .checkbox label:after {
-	border: 2px solid #2D2D2D;
+	border: 2px solid var(--alt-text-colour);
 	border-top: none;
 	border-right: none;
 	content: "";
@@ -242,24 +259,24 @@ html * {
 }
 
 .bounding-box {
-	border: 1px solid #1D5385;
+	border: 1px solid var(--main-colour);
 	padding: 10px;
 }
 
 tr:last-child td:first-child {
-	border-bottom-left-radius: 10px;
+	border-bottom-left-radius: var(--border-radius);
 }
 
 tr:last-child td:last-child {
-	border-bottom-right-radius: 10px;
+	border-bottom-right-radius: var(--border-radius);
 }
 
 th:first-child {
-	border-top-left-radius: 10px;
+	border-top-left-radius: var(--border-radius);
 }
 
 th:last-child {
-	border-top-right-radius: 10px;
+	border-top-right-radius: var(--border-radius);
 }
 
 .logo {
